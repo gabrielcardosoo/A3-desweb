@@ -1,0 +1,18 @@
+{
+  "name": "a3-desweb",
+  "version": "1.0.0",
+  "description": "Danillo Vidal   RA: 822124979   Gabriel Silva Cardoso   RA: 822147931 Guilherme Turone de Lima    RA: 822136725   Gustavo Colpaert RA: 823126177 Matheus Costa Amorim  RA: 822137176 Rikellme Kevin Andrade de Lima  RA: 822160764 Vinícios Silva Santos   RA: 822144485",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "openai": "^4.57.0"
+  }
+}
