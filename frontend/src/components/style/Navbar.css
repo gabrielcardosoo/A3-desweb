@@ -1,0 +1,31 @@
+
+.navbar {
+    background-color: transparent; /* Transparência na navbar */
+    padding: 2rem;
+    position: relative;
+}
+
+.navbar-nav {
+/* Se necessário, mover apenas os itens de navegação */
+margin-left: -40%; 
+}
+
+.nav-item .nav-link {
+color: white; /* Cor dos links */
+padding: 0.5rem 1rem;
+font-size: 1.2rem;
+font-family: 'Open Sans', sans-serif; /* Fonte Open Sans */
+font-weight: 700; /* Ajuste o peso conforme necessário */
+margin-right: 2rem; /* Espaçamento entre os links */
+}
+
+.nav-item .nav-link:hover {
+color: #1d5f0f; /* Muda a cor ao passar o mouse */
+}
+
+.fixed-top {
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+  
