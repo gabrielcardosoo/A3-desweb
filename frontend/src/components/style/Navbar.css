@@ -1,31 +1,79 @@
+/* src/style/Navbar.css */
 
-.navbar {
-    background-color: transparent; /* Transparência na navbar */
+/* Estilos gerais para telas grandes */
+.my-navbar {
+    background-color: transparent; /* Transparente */
     padding: 2rem;
+    position: relative; /* Posição normal */
+    width: 100%; /* Largura total */
+    z-index: 1000; /* Acima de outros elementos */
+}
+
+.my-navbar .navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; /* Centraliza os links */
+}
+
+.my-navbar .navbar-brand {
+    margin-right: auto; /* Logo alinhado à esquerda */
+}
+
+.my-navbar .nav-item .nav-link {
+    color: white; /* Cor dos links */
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    font-family: 'Open Sans', sans-serif; /* Fonte Open Sans */
+    font-weight: 700; /* Ajuste o peso conforme necessário */
+    margin-right: 2rem; /* Espaçamento entre os links */
+}
+
+.my-navbar .nav-item .nav-link:hover {
+    color: #1d5f0f; /* Muda a cor ao passar o mouse */
+}
+
+.my-navbar {
     position: relative;
-}
-
-.navbar-nav {
-/* Se necessário, mover apenas os itens de navegação */
-margin-left: -40%; 
-}
-
-.nav-item .nav-link {
-color: white; /* Cor dos links */
-padding: 0.5rem 1rem;
-font-size: 1.2rem;
-font-family: 'Open Sans', sans-serif; /* Fonte Open Sans */
-font-weight: 700; /* Ajuste o peso conforme necessário */
-margin-right: 2rem; /* Espaçamento entre os links */
-}
-
-.nav-item .nav-link:hover {
-color: #1d5f0f; /* Muda a cor ao passar o mouse */
-}
-
-.fixed-top {
-    position: fixed;
     width: 100%;
     top: 0;
 }
-  
+
+/* Estilo para a versão mobile (abaixo de 991px) */
+@media (max-width: 991px) {
+    .my-navbar .navbar-collapse {
+        position: absolute;
+        top: 60px; /* Ajusta a distância do topo */
+        right: 10px; /* Ajusta a posição à direita */
+        background-color: white; /* Cor de fundo para o dropdown */
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ao redor do menu */
+    }
+
+    .my-navbar .navbar-toggler {
+        border: none; /* Remove a borda do botão de toggle */
+    }
+
+    .my-navbar .navbar-toggler-icon {
+        color: white;
+    }
+
+    .my-navbar .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .my-navbar .nav-item {
+        margin: 10px 0;
+    }
+
+    .my-navbar .nav-item .nav-link {
+        color: black; /* Links em preto no menu colapsado */
+        font-size: 1rem;
+    }
+
+    .my-navbar .navbar-collapse.show {
+        display: block !important; /* Força o dropdown a aparecer */
+    }
+}

@@ -1,0 +1,102 @@
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw; /* Espaçamento relativo */
+    padding: 20px;
+    margin-top: 100px;
+    flex-wrap: wrap; /* Permite que os círculos se movam para a linha de baixo */
+}
+
+.circle-container {
+    display: flex;
+    flex-direction: column; /* Coloca o texto abaixo do círculo */
+    align-items: center; /* Alinha os itens no centro */
+}
+
+.circle {
+    border: 2px solid white; /* Borda branca */
+    background-color: transparent; /* Fundo transparente */
+    border-radius: 50%; /* Torna o elemento circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; /* Ajusta a distância entre o círculo e o texto */
+    transition: all 0.3s ease; /* Suaviza a transição */
+}
+
+/* Tamanhos responsivos para os círculos */
+.circle-icons-flash,
+.circle-icons-wifi,
+.circle-icons-ia,
+.circle-icons-inovador {
+    width: 10vw; /* 10% da largura da tela */
+    height: 10vw; /* Altura igual à largura */
+}
+
+/* Estilos do ícone */
+.icon {
+    font-size: 5vw; /* Tamanho do ícone responsivo */
+    color: white; /* Cor padrão do ícone */
+    transition: color 0.3s ease; /* Suaviza a transição da cor */
+}
+
+/* Estilo do texto */
+.circle-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2vw; /* Tamanho do texto responsivo */
+    color: white; /* Cor padrão do texto */
+    font-weight: bold;
+    transition: color 0.3s ease; /* Suaviza a transição da cor */
+}
+
+/* Efeito hover para círculos, ícones e texto */
+.circle:hover {
+    border-color: #1d5f0f; /* Muda a cor da borda do círculo */
+    background-color: white; /* Muda o fundo do círculo */
+}
+
+.circle:hover .icon {
+    color: #1d5f0f; /* Muda a cor do ícone ao passar o mouse */
+}
+
+.circle:hover .circle-text {
+    color: #1d5f0f; /* Muda a cor do texto ao passar o mouse */
+} 
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    .circle-icons-flash,
+    .circle-icons-wifi,
+    .circle-icons-ia,
+    .circle-icons-inovador {
+        width: 15vw; /* Aumenta a largura em telas menores */
+        height: 15vw; /* Aumenta a altura em telas menores */
+    }
+
+    .icon {
+        font-size: 6vw; /* Ajusta o tamanho do ícone */
+    }
+
+    .circle-text {
+        font-size: 2.5vw; /* Ajusta o tamanho do texto */
+    }
+}
+
+@media (max-width: 480px) {
+    .circle-icons-flash,
+    .circle-icons-wifi,
+    .circle-icons-ia,
+    .circle-icons-inovador {
+        width: 25vw; /* Aumenta ainda mais em telas menores */
+        height: 25vw; /* Aumenta ainda mais em telas menores */
+    }
+
+    .icon {
+        font-size: 8vw; /* Ajusta o tamanho do ícone para telas muito pequenas */
+    }
+
+    .circle-text {
+        font-size: 3vw; /* Ajusta o tamanho do texto para telas muito pequenas */
+    }
+}

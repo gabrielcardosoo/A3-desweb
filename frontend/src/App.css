@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
 .App {
-  height: 100vh;
-  background-image: url('./img/home/fundo.png'); /* Caminho correto */
+  background-image: url('./img/home/fundo.png'); 
   background-size: cover;
-  background-position: center;
+  background-position: 70% center; /* Centraliza a imagem de fundo */
   background-repeat: no-repeat;
   color: white;
   margin: 0;
@@ -18,5 +17,3 @@
     transform: translateX(-10px); /* Menor deslocamento em telas menores */
   }
 }
-
-

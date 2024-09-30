@@ -1,10 +1,14 @@
+// src/components/Description.js
 import React from 'react';
-import './style/Description.css';
+import './style/Description.css'; // Certifique-se de que este arquivo CSS exista
+
 
 function Description() {
   return (
     <div>
-      <p className='league-spartan'>CALCULE SUA DIETA EM  SEGUNDOS 7000 !</p>
+      <h1 className='font_h1'>
+          CALCULE SUA DIETA EM  SEGUNDOS !
+      </h1>
     </div>
   );
 }
