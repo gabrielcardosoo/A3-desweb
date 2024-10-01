@@ -29,7 +29,7 @@
 }
 
 .my-navbar .nav-item .nav-link:hover {
-    color: #1d5f0f; /* Muda a cor ao passar o mouse */
+    color: #8f8f8f; /* Muda a cor ao passar o mouse */
 }
 
 .my-navbar {
@@ -37,6 +37,29 @@
     width: 100%;
     top: 0;
 }
+
+.nav-link {
+    position: relative; /* Necessário para o posicionamento do pseudo-elemento */
+    text-decoration: none; /* Remove o sublinhado padrão */
+    color: inherit; /* Herda a cor do texto */
+    overflow: hidden; /* Esconde o excesso do pseudo-elemento */
+  }
+  
+  .nav-link::after {
+    content: ''; /* Necessário para criar o pseudo-elemento */
+    position: absolute;
+    left: 50%; /* Começa no meio do link */
+    bottom: 0; /* Posiciona na parte inferior do texto */
+    height: 2px; /* Espessura do sublinhado */
+    width: 100%; /* Inicia com largura total */
+    background: #1d5f0f; /* Cor igual à do texto */
+    transform: translateX(-50%) scaleX(0); /* Inicia invisível, no centro */
+    transition: transform 0.500s ease; /* Animação suave */
+  }
+  
+  .nav-link:hover::after {
+    transform: translateX(-50%) scaleX(1); /* Preenche o sublinhado ao passar o mouse */
+  }
 
 /* Estilo para a versão mobile (abaixo de 991px) */
 @media (max-width: 991px) {
