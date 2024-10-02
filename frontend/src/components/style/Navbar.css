@@ -3,6 +3,7 @@
 /* Estilos gerais para telas grandes */
 .my-navbar {
     background-color: transparent; /* Transparente */
+    margin-top: -2rem;
     padding: 2rem;
     position: relative; /* Posição normal */
     width: 100%; /* Largura total */
@@ -20,16 +21,16 @@
 }
 
 .my-navbar .nav-item .nav-link {
-    color: white; /* Cor dos links */
+    color: #a7a7a7; /* Cor dos links */
     padding: 0.5rem 1rem;
     font-size: 1.5rem;
     font-family: 'Open Sans', sans-serif; /* Fonte Open Sans */
     font-weight: 700; /* Ajuste o peso conforme necessário */
-    margin-right: 2rem; /* Espaçamento entre os links */
+    margin-right: 3rem; /* Espaçamento entre os links */
 }
 
 .my-navbar .nav-item .nav-link:hover {
-    color: #8f8f8f; /* Muda a cor ao passar o mouse */
+    color: white; /* Muda a cor ao passar o mouse */
 }
 
 .my-navbar {
@@ -94,6 +95,10 @@
     .my-navbar .nav-item .nav-link {
         color: black; /* Links em preto no menu colapsado */
         font-size: 1rem;
+    }
+
+    .my-navbar .nav-item .nav-link:hover {
+        color: rgb(109, 109, 109);
     }
 
     .my-navbar .navbar-collapse.show {

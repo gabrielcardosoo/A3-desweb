@@ -42,7 +42,7 @@ function Navbar() {
     <nav className="navbar my-navbar navbar-expand-lg navbar-dark " ref={navbarRef}>
       <div className="container d-flex align-items-center justify-content-between">
         <a className="navbar-brand" href="#">
-          <img src="/img/logo_home_public.png" alt="Logo" width="200" height="200" className="logo" />
+          <img src="/img/logo_home_public.png" alt="Logo" width="150" height="150" className="logo" />
         </a>
         <button
           className="navbar-toggler"
