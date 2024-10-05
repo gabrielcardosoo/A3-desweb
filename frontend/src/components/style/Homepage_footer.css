@@ -15,7 +15,11 @@
 }
 
 .circle {
+<<<<<<< HEAD
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.3); /* Sombra leve */
+=======
     box-shadow: 5px 10px 20px rgba(0, 0, 0); /* Sombra leve */
+>>>>>>> 4e6952e6826bf35327f14bd831fe645f9d162346
     border: 2px solid white; /* Borda branca */
     background-color: transparent; /* Fundo transparente */
     border-radius: 50%; /* Torna o elemento circular */

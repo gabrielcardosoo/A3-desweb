@@ -1,14 +1,21 @@
 /* Importa a fonte Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 4e6952e6826bf35327f14bd831fe645f9d162346
 /* Define a altura completa da viewport */
 html, body {
   height: 100%;
   margin: 0;
   background: linear-gradient(to right, #000000, #004400);
   color: #ffffff;
+<<<<<<< HEAD
+  font-family: 'Poppins', sans-serif;
+=======
   font-family: Arial, sans-serif;
+>>>>>>> 4e6952e6826bf35327f14bd831fe645f9d162346
 }
 
 /* Estilização do container principal */
@@ -29,8 +36,13 @@ html, body {
   font-size: 24px;
   color: rgba(255, 255, 255, 0.7);
   padding: 10px 20px;
+<<<<<<< HEAD
+  border: 2px solid rgba(100, 100, 100, 0.5);
+  border-radius: 30px;
+=======
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 20px;
+>>>>>>> 4e6952e6826bf35327f14bd831fe645f9d162346
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   cursor: pointer;
 }
@@ -47,8 +59,13 @@ html, body {
   max-width: 600px;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
+<<<<<<< HEAD
+  border-radius: 30px;
+  border: 2px solid rgba(100, 100, 100, 0.5);
+=======
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+>>>>>>> 4e6952e6826bf35327f14bd831fe645f9d162346
   color: rgba(255, 255, 255, 0.8);
   text-align: left;
   margin-top: 20px; /* Adiciona espaço entre o título e o conteúdo abaixo */
@@ -57,9 +74,58 @@ html, body {
 .about-content h1 {
   font-size: 20px;
   margin-bottom: 10px;
+<<<<<<< HEAD
+  padding: 10px; /* Adiciona espaço interno */
+  border: 2px solid rgba(100, 100, 100, 0.5); /* Adiciona borda ao título */
+  border-radius: 5px; /* Arredondamento da borda do título */
+}
+
+.about-header {
+  display: flex;
+  align-items: center; /* Alinha verticalmente o ícone e o título */
+  margin-bottom: 20px; /* Espaço abaixo do cabeçalho */
+}
+
+.content-header {
+  display: flex;
+  align-items: center; /* Alinha verticalmente o ícone e o texto */
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%; /* Garante que o container ocupe toda a largura */
+  padding-left: 10px; /* Ajuste para controlar o espaçamento do texto */
+  padding-right: 10px; /* Ajuste para controlar o espaçamento do texto */
+  height: 40px;
+}
+.content-header::before {
+  content: '';
+  position: absolute;
+  bottom: -5px; /* Ajuste a posição da linha */
+  left: -20px; /* Empurra a linha para fora do container à esquerda */
+  right: -20px; /* Empurra a linha para fora do container à direita */
+  height: 2px; /* Aumenta a altura da linha para dar mais destaque */
+  background-color: rgba(100, 100, 100, 0.5); /* Cor mais sólida para a linha */
+}
+
+.content-header h2 {
+  font-size: 16px; /* Ajuste o tamanho da fonte para o valor desejado */
+  margin: 0; /* Remove margens adicionais */
+  padding-bottom: 10px; /* Espaço abaixo do título */
+  display: block; /* Garante que o h2 seja exibido como um bloco */
+  color:rgba(255, 255, 255, 0.8);
+}
+
+.content-header i {
+  color: #404040;
+  font-size: 20px;
+  margin-right: 10px; /* Espaço entre o ícone e o h2 */
+  transform: translateY(-4px); /* Ajuste a quantidade para mover o ícone para cima */
+}
+
+=======
 }
 
 .about-content p {
   font-size: 16px;
   line-height: 1.5;
 }
+>>>>>>> 4e6952e6826bf35327f14bd831fe645f9d162346
