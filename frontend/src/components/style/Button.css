@@ -3,6 +3,7 @@
 }
 
 .btn-custom {
+    box-shadow: 6px 5px 6px rgba(0, 0, 0, 0.3); /* Sombra leve */
     position: absolute; /* Posição inicial do botão. */
     right: 3%; /* Alinha à direita do contêiner pai */
     display: inline-flex; /* Flex para alinhar ícone e texto */
