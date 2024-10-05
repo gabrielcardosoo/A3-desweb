@@ -15,7 +15,7 @@
 }
 
 .circle {
-    box-shadow: 0px 0px 12px rgba(252, 252, 252, 0.3); /* Sombra leve */
+    box-shadow: 5px 10px 20px rgba(0, 0, 0); /* Sombra leve */
     border: 2px solid white; /* Borda branca */
     background-color: transparent; /* Fundo transparente */
     border-radius: 50%; /* Torna o elemento circular */
@@ -54,6 +54,7 @@
 .circle:hover {
     border-color: #1d5f0f; /* Muda a cor da borda do círculo */
     background-color: white; /* Muda o fundo do círculo */
+    box-shadow: 0px 0px 20px rgba(252, 252, 252, 0.4);
 }
 
 .circle:hover .icon {
