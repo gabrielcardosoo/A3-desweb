@@ -13,13 +13,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
-  return (
-    <div className="App">
-      <MainContent />
-      <About />
-      <Calc />
-    </div>
-  );
+return (
+      <div className="App">
+            <MainContent />
+            <About />
+            <Calc />
+      </div>
+);
 }
 
 export default App;
