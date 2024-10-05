@@ -53,7 +53,7 @@
     bottom: 0; /* Posiciona na parte inferior do texto */
     height: 2px; /* Espessura do sublinhado */
     width: 100%; /* Inicia com largura total */
-    background: #1d5f0f; /* Cor igual à do texto */
+    background: white; /* Cor igual à do texto */
     transform: translateX(-50%) scaleX(0); /* Inicia invisível, no centro */
     transition: transform 0.500s ease; /* Animação suave */
   }

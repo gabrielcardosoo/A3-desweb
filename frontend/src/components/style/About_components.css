@@ -1,15 +1,65 @@
+/* Importa a fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+
+/* Define a altura completa da viewport */
 html, body {
-    height: 100%;
-    margin: 0;
-  }
-  
-  .about-container {
-    min-height: 100vh; /* Altura mínima da viewport */
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
-  }
-  
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(to right, #000000, #004400);
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+/* Estilização do container principal */
+.about-container {
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Estilização do título "SOBRE NÓS" */
+.about-title {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+
+.about-title:hover {
+  color: #1d5f0f; /* Cor verde ao passar o mouse */
+  background-color: white; /* Fundo branco ao passar o mouse */
+  border-color: #1d5f0f; /* Muda a cor da borda para verde */
+}
+
+/* Estilização do conteúdo do texto abaixo */
+.about-content {
+  width: 90%;
+  max-width: 600px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  text-align: left;
+  margin-top: 20px; /* Adiciona espaço entre o título e o conteúdo abaixo */
+}
+
+.about-content h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.about-content p {
+  font-size: 16px;
+  line-height: 1.5;
+}
