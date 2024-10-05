@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
 .App {
-  background: linear-gradient(to right, #000000 1%, #002200 70%, #004400 90%);
+  background: linear-gradient(to right, #000000 1%, #0b4121 70%, #0e4223 90%);
   background-size: cover;
   background-position: 70% center; /* Centraliza a imagem de fundo */
   background-repeat: no-repeat;
