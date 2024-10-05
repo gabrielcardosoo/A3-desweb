@@ -57,16 +57,16 @@ function Navbar() {
         <div className={`collapse navbar-collapse justify-content-center ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
         <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#" onClick={refreshPage}>HOME</a>
+              <a className="nav-link" href="#" onClick={refreshPage}> HOME</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#about">SOBRE</a>
+              <a className="nav-link" href="#about"> SOBRE</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#calc">CALCULADORA</a>
+              <a className="nav-link" href="#calc"> CALCULADORA</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">INTEGRANTES</a>
+              <a className="nav-link" href="#"> INTEGRANTES</a>
             </li>
           </ul>
         </div>

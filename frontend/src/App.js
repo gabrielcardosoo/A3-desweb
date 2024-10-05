@@ -5,7 +5,7 @@ import Description from './components/Description';
 import Button from './components/Button';
 import HomepageFooter from './components/Homepage_footer';
 import About from './components/About_components'; // Corrected import path
-import Calc from './components/Calc_components';
+import Calc from './components/Integrant_components';
 import MainContent from './components/MainContent'; // Caminho correto para o MainContent
 
 import 'bootstrap/dist/css/bootstrap.min.css';
