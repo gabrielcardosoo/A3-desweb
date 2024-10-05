@@ -46,7 +46,6 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 1.2vw; /* Tamanho do texto responsivo */
     color: white; /* Cor padrão do texto */
-    font-weight: bold;
     transition: color 0.3s ease; /* Suaviza a transição da cor */
 }
 
