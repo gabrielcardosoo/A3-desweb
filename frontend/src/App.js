@@ -11,13 +11,14 @@ import MainContent from './components/MainContent'; // Caminho correto para o Ma
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import IntegrantComponents from './components/Integrant_components';
 
 function App() {
   return (
     <div className="App">
       <MainContent />
       <About />
-      <Calc />
+      <IntegrantComponents />
     </div>
   );
 }

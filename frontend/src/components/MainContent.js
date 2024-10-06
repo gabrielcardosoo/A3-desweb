@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Description from './Description';
 import Button from './Button';
 import HomepageFooter from './Homepage_footer';
+import IntegrantComponents from './Integrant_components';
 
 function MainContent() {
   return (
@@ -13,6 +14,7 @@ function MainContent() {
       <Description />
       <Button />
       <HomepageFooter />
+      
     </div>
   );
 }

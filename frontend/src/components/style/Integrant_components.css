@@ -1,14 +1,123 @@
-html, body {
-    height: 100%;
-    margin: 0;
+.integrantes-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.integ-container {
-    min-height: 100vh; /* Altura mínima da viewport */
-    padding: 20px;
-    box-sizing: border-box;
+.integrant-carousel {
+    width: 90%; /* Ajusta a largura do carrossel */
+    text-align: center; /* Centraliza o texto */
+  }
+
+  /* Estilização do título "Integrantes" */
+.integ-title {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 10px 20px;
+    margin-left: 20px;
+    border: 2px solid rgba(100, 100, 100, 0.5);
+    border-radius: 30px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .integ-title:hover {
+    color: #1d5f0f; /* Cor verde ao passar o mouse */
+    background-color: white; /* Fundo branco ao passar o mouse */
+    border-color: #1d5f0f; /* Muda a cor da borda para verde */
+  }
+
+  .integ-header {
     display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
+    align-items: center; /* Alinha verticalmente o ícone e o título */
+    margin-bottom: 20px; /* Espaço abaixo do cabeçalho */
+  }
+  
+  .integrant-card {
+    display: flex; /* Usando flexbox para organizar os itens */
+    flex-direction: column; /* Organiza os itens na coluna */
+    align-items: center; /* Centraliza os itens horizontalmente */
+    justify-content: center; /* Centraliza os itens verticalmente */
+    margin: 20px; /* Espaço entre os cartões */
+    padding: 15px; /* Espaço interno do cartão */
+    height: 100%; /* Faz o cartão ocupar a altura total do slider */
+  }
+  
+  .integrant-image {
+    display: inline-block; /* Para aplicar margens corretamente */
+    margin: 0 auto; /* Centraliza a imagem */
+    border-radius: 100%; /* Arredonda os cantos da imagem */
+    width: 500px; /* Ajuste a largura da imagem conforme necessário */
+    height: 500px; /* Ajuste a altura da imagem conforme necessário */
+    object-fit: cover; /* Garante que a imagem cubra a área */
+  }
+  
+  .integrant-card h3 {
+    font-size: 2rem; /* Tamanho da fonte do nome */
+    margin-top: 20px;
+    color: #d8d8d8; /* Cor do nome */
+  }
+  
+  p {
+    font-size: 1rem; /* Tamanho da fonte da posição */
+    color: #666; /* Cor da posição */
+  }
+  
+  .linkedin-button {
+    position: absolute;
+    bottom: 125px;
+    margin-left: 125px;
+    margin-top: 10px; /* Espaço acima do botão */
+    padding: 25px 30px; /* Espaçamento interno do botão */
+    color: white; /* Cor do texto */
+    background-color: #0077b5; /* Cor de fundo do LinkedIn */
+    border-radius: 100%; /* Bordas arredondadas */
+    text-decoration: none; /* Remove sublinhado */
+    transition: background-color 0.3s; /* Transição suave na cor de fundo */
+  }
+  
+  .linkedin-button:hover {
+    background-color: #005582; /* Cor do botão ao passar o mouse */
+  }
+
+  /* Media queries para telas menores */
+  @media (max-width: 1800px) {
+    .integrant-image {
+      max-width: 350px; /* Ajuste a largura máxima para telas menores */
+      max-height: 350px;
+    }
+  
+    .linkedin-button {
+      position: absolute;
+      bottom: 90px;
+      margin-left: 80px;
+    }
+  }
+
+@media (max-width: 1600px) {
+  .integrant-image {
+    max-width: 300px; /* Ajuste a largura máxima para telas menores */
+    max-height: 300px;
+  }
+
+  .linkedin-button {
+    position: absolute;
+    bottom: 90px;
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .integrant-image {
+    max-width: 200px; /* Ajuste a largura máxima para telas muito pequenas */
+    max-height: 200px;
+  }
+
+  .linkedin-button {
+    position: absolute;
+    bottom: 100px;
+    margin-left: 50px;
+    padding: 10px 15px; /* Espaçamento interno do botão */
+  }
 }
