@@ -79,7 +79,7 @@ const IntegrantComponents = () => {
   return (
     <div id="integrantes" className="integrantes-container">
       <div className="integ-header">
-        <h1 className="integ-title">INTEGRANTES</h1>
+        <h1 className="integ-title">Integrantes</h1>
       </div>
       <div className='integrant-carousel'>
       <Slider {...settings}>
