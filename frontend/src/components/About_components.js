@@ -10,52 +10,50 @@ function About() {
       <div className="about-content">
         <div className="content-header">
           <i className="fa-solid fa-bars" style={{ color: '#404040', fontSize: '20px', marginRight: '10px' }}></i>
-          <h2>Seção 1</h2>
+          <h2>Especificação do Projeto: Calculadora de Calorias Integrada com ChatGPT</h2>
         </div>
         <p>
-          It was a cold Saturday morning. I was at a conference in Germany and started to feel very sick. I could barely
-          move, but I had to take a plane to speak at another conference in Spain. In the middle of the flight, I called
-          the flight attendant and said I needed help. The airplane landed, and I left there in an ambulance.
-
-          It was a cold Saturday morning. I was at a conference in Germany and started to feel very sick. I could barely
-          move, but I had to take a plane to speak at another conference in Spain. In the middle of the flight, I called
-          the flight attendant and said I needed help. The airplane landed, and I left there in an ambulance.
+          <strong>Descrição Geral</strong>
+          <br />
+          Este projeto tem como objetivo desenvolver uma aplicação web interativa que ajuda os usuários a calcular a quantidade de calorias de suas refeições diárias. A aplicação será integrada com a API do ChatGPT para fornecer feedback nutricional personalizado e sugerir opções de alimentos saudáveis. O usuário poderá inserir os ingredientes ou refeições que consumiu, e o sistema calculará o valor calórico total. Além disso, a integração com o ChatGPT permitirá que o sistema forneça sugestões nutricionais adicionais, como substituições alimentares ou dicas para alcançar metas de saúde específicas.
         </p>
         <div className="line"></div>
         <p>
-          After spending a few days in the hospital, I realized how fragile our health can be. This experience made me
-          appreciate the little things in life and motivated me to always prioritize my well-being.
-
-          It was a cold Saturday morning. I was at a conference in Germany and started to feel very sick. I could barely
-          move, but I had to take a plane to speak at another conference in Spain. In the middle of the flight, I called
-          the flight attendant and said I needed help. The airplane landed, and I left there in an ambulance.
+          <strong>Funcionalidades:</strong>
         </p>
+        <ul className="functionalities-list">
+          <li>Cálculo automático de calorias baseado nos alimentos inseridos pelo usuário.</li>
+          <li>Integração com o ChatGPT para fornecer sugestões de refeições e recomendações nutricionais.</li>
+          <li>Armazenamento das consultas e respostas em um banco de dados relacional (MySQL ou PostgreSQL) para fins de monitoramento e análise de padrões alimentares.</li>
+          <li>Interface intuitiva desenvolvida em React para fácil interação com o usuário.</li>
+        </ul>
         <div className="line"></div>
-
+        
         {/* Novo h2 antes do terceiro parágrafo */}
         <div className="content-header">
           <i className="fa-solid fa-bars" style={{ color: '#404040', fontSize: '20px', marginRight: '10px' }}></i>
-          <h2>Seção 2</h2> {/* Troque "New Section Title" pelo texto desejado */}
+          <h2>Funcionalidades Detalhadas da Calculadora de Calorias Integrada</h2>
         </div>
         <p>
-          After spending a few days in the hospital, I realized how fragile our health can be. This experience made me
-          appreciate the little things in life and motivated me to always prioritize my well-being.
-
-          It was a cold Saturday morning. I was at a conference in Germany and started to feel very sick. I could barely
-          move, but I had to take a plane to speak at another conference in Spain. In the middle of the flight, I called
-          the flight attendant and said I needed help. The airplane landed, and I left there in an ambulance.
+          <strong>Descrição das Funcionalidades</strong>
+          <br />
+          A aplicação contará com várias funcionalidades principais voltadas para facilitar o controle de calorias e fornecer suporte nutricional ao usuário:
         </p>
         <div className="line"></div>
-        <p>
-          After spending a few days in the hospital, I realized how fragile our health can be. This experience made me
-          appreciate the little things in life and motivated me to always prioritize my well-being.
-
-          It was a cold Saturday morning. I was at a conference in Germany and started to feel very sick. I could barely
-          move, but I had to take a plane to speak at another conference in Spain. In the middle of the flight, I called
-          the flight attendant and said I needed help. The airplane landed, and I left there in an ambulance.
-
-          
-        </p>
+        <ul className="functionalities-list">
+          <li>
+            Inserção de Alimentos: O usuário poderá inserir os alimentos consumidos, e a calculadora retornará o valor calórico de cada item, bem como o valor calórico total da refeição.
+          </li>
+          <li>
+            Sugestões do ChatGPT: Usando a API do ChatGPT, a aplicação oferecerá sugestões de substituições alimentares com base nas preferências do usuário ou metas nutricionais, como reduzir a ingestão de açúcar ou aumentar a ingestão de proteínas.
+          </li>
+          <li>
+            Registro de Consultas: Cada consulta feita pelo usuário, assim como a resposta gerada pelo ChatGPT, será registrada em um banco de dados MySQL/PostgreSQL para posterior análise e acompanhamento.
+          </li>
+          <li>
+            Interface Responsiva: A aplicação terá uma interface construída em React, facilitando a navegação e interação com os dados, proporcionando uma experiência agradável e eficiente.
+          </li>
+        </ul>
       </div>
     </div>
   );

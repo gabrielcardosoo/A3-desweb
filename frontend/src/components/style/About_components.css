@@ -133,3 +133,20 @@ html, body {
 .content-header i:hover {
   color: white; /* Muda a cor do ícone para branco ao passar o mouse */
 }
+
+/* Estilo da lista de funcionalidades */
+.functionalities-list {
+  padding-left: 20px; /* Adiciona espaço à esquerda da lista */
+  color: rgba(180, 180, 180, 0.5); /* Cor padrão dos itens da lista */
+}
+
+/* Estilo dos itens da lista */
+.functionalities-list li {
+  margin-bottom: 10px; /* Espaço entre os itens da lista */
+  transition: color 0.5s ease; /* Transição suave para a mudança de cor */
+}
+
+/* Efeito de hover para os itens da lista */
+.functionalities-list li:hover {
+  color: white; /* Muda a cor para branco ao passar o mouse */
+}

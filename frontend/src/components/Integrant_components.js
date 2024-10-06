@@ -7,46 +7,46 @@ import 'slick-carousel/slick/slick-theme.css';
 const IntegrantComponents = () => {
   const teamMembers = [
     {
-      name: 'Danilo Vidal',
-      position: '',
-      image: '/img/fotos/DaniloVidal.jpg', // Substitua pelo link da imagem
-      linkedin: 'https://www.linkedin.com/in/eido-gal', // Link do LinkedIn
+      name: 'Danillo Vidal',
+      position: 'RA: 822124979',
+      image: '/img/fotos/Danillo Vidal.jpg', // Substitua pelo link da imagem
+      linkedin: 'https://www.linkedin.com/in/danillo-vidal/', // Link do LinkedIn
     },
     {
       name: 'Gustavo Colpaert',
-      position: '',
-      image: '/img/fotos/Ronaldo.jpeg', // Substitua pelo link da imagem
-      linkedin: 'https://www.linkedin.com/in/assaf-feldman', // Link do LinkedIn
+      position: 'RA: 823126177',
+      image: '/img/fotos/Gustavo Colpaert.jpg', // Substitua pelo link da imagem
+      linkedin: 'https://www.linkedin.com/in/colpaertgustavo/', // Link do LinkedIn
     },
     {
-      name: 'Guilherme Turone',
-      position: '',
-      image: '/img/fotos/Mia.jpg', // Substitua pelo link da imagem
-      linkedin: 'https://www.linkedin.com/in/aglika-dotcheva', // Link do LinkedIn
+      name: 'Guilherme Turone de Lima',
+      position: 'RA: 822136725',
+      image: '/img/fotos/Guilherme Turone.jpeg', // Substitua pelo link da imagem
+      linkedin: 'https://www.linkedin.com/in/guilherme-turone-683234225/', // Link do LinkedIn
     },
     {
-      name: 'Guilherme Turone',
-      position: '',
-      image: '/img/fotos/Mia.jpg', // Substitua pelo link da imagem
-      linkedin: 'https://www.linkedin.com/in/aglika-dotcheva', // Link do LinkedIn
+      name: 'Gabriel Silva Cardoso',
+      position: 'RA: 822147931',
+      image: '/img/fotos/Gabriel Cardoso.jpeg', // Substitua pelo link da imagem
+      linkedin: 'https://www.linkedin.com/in/gabriel-silva-cardoso/', // Link do LinkedIn
     },
     {
-      name: 'Guilherme Turone',
-      position: '',
-      image: '/img/fotos/Mia.jpg', // Substitua pelo link da imagem
-      linkedin: 'https://www.linkedin.com/in/aglika-dotcheva', // Link do LinkedIn
+      name: 'Vinícios Silva Santos',
+      position: 'RA: 822144485  ',
+      image: '/img/fotos/Vinícios Silva.jpg', // Substitua pelo link da imagem
+      linkedin: 'https://www.linkedin.com/in/vinicios-santos-52678a331?trk=contact-info', // Link do LinkedIn
     },
     {
-      name: 'Guilherme Turone',
-      position: '',
-      image: '/img/fotos/Mia.jpg', // Substitua pelo link da imagem
-      linkedin: 'https://www.linkedin.com/in/aglika-dotcheva', // Link do LinkedIn
+      name: 'Matheus Costa Amorim',
+      position: 'RA: 822137176',
+      image: '/img/fotos/Matheus Amorim.jpeg', // Substitua pelo link da imagem
+      linkedin: 'https://www.linkedin.com/in/matheus-amorim-1m/', // Link do LinkedIn
     },
     {
-      name: 'Guilherme Turone',
-      position: '',
-      image: '/img/fotos/Mia.jpg', // Substitua pelo link da imagem
-      linkedin: 'https://www.linkedin.com/in/aglika-dotcheva', // Link do LinkedIn
+      name: 'Rikellme Kevin Andrade de Lima',
+      position: 'RA: 822160764',
+      image: '/img/fotos/Rikellme Kevin.jpeg', // Substitua pelo link da imagem
+      linkedin: 'https://www.linkedin.com/in/rikellme-lima-a672741a5/', // Link do LinkedIn
     },
   ];
 
