@@ -1,0 +1,31 @@
+:root {
+    --icon-size: 35px;
+    --icon-padding: 0.8rem;
+}
+
+.user-icon-logout {
+    height: var(--icon-size);
+    width: var(--icon-size);
+    background-color: #1d5f0f;
+    border-radius: 50%;
+    padding: var(--icon-padding);
+    cursor: pointer;
+}
+
+.user-icon-logout:hover {
+    height: calc(var(--icon-size) + 5px); /* Exemplo de hover aumentando o tamanho */
+    width: calc(var(--icon-size) + 5px);
+}
+
+.user-icon-logged {
+    height: calc(var(--icon-size) + 2 * var(--icon-padding)); /* Tamanho base mais o padding */
+    width: calc(var(--icon-size) + 2 * var(--icon-padding));
+    background-color: #1d5f0f;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.user-icon-logged:hover {
+    height: calc(var(--icon-size) + 2 * var(--icon-padding) + 5px); /* Aumenta o tamanho no hover */
+    width: calc(var(--icon-size) + 2 * var(--icon-padding) + 5px);
+}

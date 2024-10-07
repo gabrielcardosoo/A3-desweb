@@ -3,10 +3,28 @@ import './style/Navbar.css';
 import Logo from './Logo';
 import BurguerMenu from './BurguerMenu';
 import NavItem from './NavItem';
+import User from './User';
+import UserMenu from './UserMenu';
 
 function Navbar() {
   const [isBurguerMenuOpen, setIsBurguerMenuOpen] = useState(false);
   const burguerMenuRef = useRef(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userImage, setUserImage] = useState(null);
+  const [isUserMenu, setIsUserMenu] = useState(false);
+
+  // Função para simular o login e escolher a imagem do usuário
+  const handleLogin = () => {
+    setIsUserMenu(true); // Define o estado do menu do usuário como aberto
+    console.log('Realizou login');
+    setIsLoggedIn(true); // Define o estado como logado
+  };
+
+  // Função para logout
+  const handleLogout = () => {
+    setUserImage(null); // Limpa a imagem do usuário
+    setIsLoggedIn(false); // Define o estado como deslogado
+  };
 
   // função que alterna o estado do BurguerMenu
   const toggleBurguerMenu = () => {
@@ -54,7 +72,9 @@ function Navbar() {
             
           </ul>
         </div>
-        <div>USER LOGO</div>
+
+      <User stateLogin={isLoggedIn} userImage={userImage}/>
+      {isUserMenu && <UserMenu stateLogin={isLoggedIn}/>}
       </div>
     </nav>
   );
