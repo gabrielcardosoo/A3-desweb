@@ -66,7 +66,7 @@ function Navbar() {
               <a className="nav-link" href="#calc"> CALCULADORA</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#"> INTEGRANTES</a>
+              <a className="nav-link" href="#integrantes"> INTEGRANTES</a>
             </li>
           </ul>
         </div>

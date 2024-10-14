@@ -12,15 +12,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import IntegrantComponents from './components/Integrant_components';
+import Calculator from './components/Calculator';
 
 function App() {
-  return (
-    <div className="App">
-      <MainContent />
-      <About />
+  return (
+    <div className="App">
+      <MainContent />
+      <About />
+      <Calculator />
       <IntegrantComponents />
-    </div>
-  );
+    </div>
+);
 }
 
 export default App;

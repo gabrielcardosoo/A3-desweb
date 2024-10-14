@@ -1,0 +1,70 @@
+.ingredient-form-container {
+  background-color: #2d6a4f;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.ingredient-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ingredient-input, .quantity-input {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+.ingredient-input {
+  width: 70%;
+  background-color: #3c6e71;
+  color: white;
+  text-align: center;
+}
+
+.quantity-input {
+  width: 20%;
+  background-color: #3c6e71;
+  color: white;
+  text-align: center;
+}
+
+.add-ingredient-btn {
+  background-color: #081c15;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.add-ingredient-btn:hover {
+  background-color: #0b3625;
+}
+
+.add-ingredient-btn span {
+  font-size: 1.5rem;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
