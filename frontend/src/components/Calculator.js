@@ -7,7 +7,6 @@ export const Calculator = () => {
     <div id="calc" className="calculator-container" >
       <h1>Calculadora</h1>
       <IngredientForm />
-      <UploadButton />
     </div>
   )
 }
