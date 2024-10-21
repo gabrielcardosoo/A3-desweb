@@ -51,7 +51,7 @@ const IntegrantComponents = () => {
   ];
 
   const settings = {
-    dots: true,
+    
     infinite: true,
     speed: 1000,
     slidesToShow: 3, // Mostra 3 slides ao mesmo tempo

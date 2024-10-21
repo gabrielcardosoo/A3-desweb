@@ -1,3 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #000000, #004400); /* Degradê no body */
+  min-height: 100vh; /* Garante que o body ocupe ao menos 100% da tela */
+  display: flex;
+  flex-direction: column;
+}
+
 .integrantes-container {
   margin-top: 200px;
   display: flex;
@@ -122,3 +131,4 @@
     padding: 10px 15px; /* Espaçamento interno do botão */
   }
 }
+

@@ -1,10 +1,8 @@
-/* src/style/Navbar.css */
-
 /* Estilos gerais para telas grandes */
 .my-navbar {
     background-color: transparent; /* Transparente */
-    margin-top: -2rem;
-    padding: 2rem;
+    margin-top: 3rem;
+    padding: 2rem; /* Aqui você pode alterar o padding */
     position: relative; /* Posição normal */
     width: 100%; /* Largura total */
     z-index: 1000; /* Acima de outros elementos */
@@ -44,9 +42,9 @@
     text-decoration: none; /* Remove o sublinhado padrão */
     color: inherit; /* Herda a cor do texto */
     overflow: hidden; /* Esconde o excesso do pseudo-elemento */
-  }
-  
-  .nav-link::after {
+}
+
+.nav-link::after {
     content: ''; /* Necessário para criar o pseudo-elemento */
     position: absolute;
     left: 50%; /* Começa no meio do link */
@@ -56,11 +54,11 @@
     background: white; /* Cor igual à do texto */
     transform: translateX(-50%) scaleX(0); /* Inicia invisível, no centro */
     transition: transform 0.500s ease; /* Animação suave */
-  }
-  
-  .nav-link:hover::after {
+}
+
+.nav-link:hover::after {
     transform: translateX(-50%) scaleX(1); /* Preenche o sublinhado ao passar o mouse */
-  }
+}
 
 /* Estilo para a versão mobile (abaixo de 991px) */
 @media (max-width: 991px) {

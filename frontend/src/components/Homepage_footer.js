@@ -13,7 +13,7 @@ function Homepage_footer() {
       </div>
 
       {/* Círculo com ícone de Wi-Fi */}
-      <div className="circle-container">
+      <div className="circle-container" >
         <div className="circle circle-icons-wifi">
           <i className="fa-solid fa-wifi icon"></i> {/* Ícone de Wi-Fi */}
         </div>

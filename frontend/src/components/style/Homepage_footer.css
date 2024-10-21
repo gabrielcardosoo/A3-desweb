@@ -1,103 +1,94 @@
 .footer-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5vw; /* Espaçamento relativo */
+    justify-content: center; /* Centraliza os círculos no eixo horizontal */
+    align-items: center; /* Alinha os círculos no eixo vertical */
+    gap: 5vw; /* Ajusta o espaçamento entre os círculos */
     padding: 20px;
     margin-top: 100px;
-    flex-wrap: wrap; /* Permite que os círculos se movam para a linha de baixo */
+    flex-wrap: wrap; /* Permite que os círculos fiquem em várias linhas */
 }
 
 .circle-container {
     display: flex;
-    flex-direction: column; /* Coloca o texto abaixo do círculo */
-    align-items: center; /* Alinha os itens no centro */
+    flex-direction: column;
+    align-items: center; /* Alinha o ícone e o texto no centro */
+    text-align: center; /* Garante que o texto fique centralizado */
 }
 
 .circle {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centraliza o ícone dentro do círculo */
     box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.3); /* Sombra leve */
     border: 2px solid white; /* Borda branca */
     background-color: transparent; /* Fundo transparente */
     border-radius: 50%; /* Torna o elemento circular */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px; /* Ajusta a distância entre o círculo e o texto */
+    width: 8rem; /* Tamanho ajustado fixo em rem para telas grandes */
+    height: 8rem; /* Altura igual à largura */
+    margin-bottom: 10px; /* Espaço entre o círculo e o texto */
     transition: all 0.3s ease; /* Suaviza a transição */
 }
 
-/* Tamanhos responsivos para os círculos */
-.circle-icons-flash,
-.circle-icons-wifi,
-.circle-icons-ia,
-.circle-icons-inovador {
-    width: 10vw; /* 10% da largura da tela */
-    height: 10vw; /* Altura igual à largura */
-}
-
-/* Estilos do ícone */
 .icon {
-    font-size: 5vw; /* Tamanho do ícone responsivo */
+    font-size: 4rem; /* Tamanho fixo em rem para melhor controle em telas grandes */
     color: white; /* Cor padrão do ícone */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Garante que o ícone fique centralizado */
+    line-height: 1; /* Evita interferências no alinhamento */
     transition: color 0.3s ease; /* Suaviza a transição da cor */
 }
 
-/* Estilo do texto */
 .circle-text {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.2vw; /* Tamanho do texto responsivo */
-    color: white; /* Cor padrão do texto */
+    font-size: 1rem; /* Ajuste de tamanho do texto para ser mais consistente */
+    color: white; /* Cor do texto */
     transition: color 0.3s ease; /* Suaviza a transição da cor */
+    text-align: center; /* Centraliza o texto */
 }
 
-/* Efeito hover para círculos, ícones e texto */
+/* Efeitos de hover */
 .circle:hover {
-    border-color: #1d5f0f; /* Muda a cor da borda do círculo */
-    background-color: white; /* Muda o fundo do círculo */
+    border-color: #1d5f0f;
+    background-color: white;
     box-shadow: 0px 0px 20px rgba(252, 252, 252, 0.4);
 }
 
 .circle:hover .icon {
-    color: #1d5f0f; /* Muda a cor do ícone ao passar o mouse */
+    color: #1d5f0f;
 }
 
 .circle:hover .circle-text {
-    color: #1d5f0f; /* Muda a cor do texto ao passar o mouse */
-} 
+    color: #1d5f0f;
+}
 
 /* Ajustes para telas menores */
 @media (max-width: 768px) {
-    .circle-icons-flash,
-    .circle-icons-wifi,
-    .circle-icons-ia,
-    .circle-icons-inovador {
-        width: 15vw; /* Aumenta a largura em telas menores */
-        height: 15vw; /* Aumenta a altura em telas menores */
+    .circle {
+        width: 12vw; /* Tamanho responsivo para telas médias */
+        height: 12vw;
     }
 
     .icon {
-        font-size: 6vw; /* Ajusta o tamanho do ícone */
+        font-size: 6vw;
     }
 
     .circle-text {
-        font-size: 2.5vw; /* Ajusta o tamanho do texto */
+        font-size: 2vw;
     }
 }
 
 @media (max-width: 480px) {
-    .circle-icons-flash,
-    .circle-icons-wifi,
-    .circle-icons-ia,
-    .circle-icons-inovador {
-        width: 25vw; /* Aumenta ainda mais em telas menores */
-        height: 25vw; /* Aumenta ainda mais em telas menores */
+    .circle {
+        width: 20vw; /* Tamanho responsivo para telas pequenas */
+        height: 20vw;
     }
 
     .icon {
-        font-size: 8vw; /* Ajusta o tamanho do ícone para telas muito pequenas */
+        font-size: 8vw;
     }
 
     .circle-text {
-        font-size: 3vw; /* Ajusta o tamanho do texto para telas muito pequenas */
+        font-size: 3vw;
     }
 }

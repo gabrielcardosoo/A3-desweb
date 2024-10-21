@@ -8,6 +8,8 @@ html, body {
   background: linear-gradient(to right, #000000, #004400);
   color: #ffffff;
   font-family: 'Poppins', sans-serif;
+  
+  
 }
 
 /* Estilização do container principal */
@@ -150,3 +152,4 @@ html, body {
 .functionalities-list li:hover {
   color: white; /* Muda a cor para branco ao passar o mouse */
 }
+
