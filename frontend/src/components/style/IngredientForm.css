@@ -34,21 +34,47 @@ html, body {
 }
 
 .inputs {
+  width: 15em;
   display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: flex-end;
+  flex-direction: column;
+  margin-bottom: 1em;
 }
 
-button {
-  align-self: flex-end;
+.inputs-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.inputs > button,
+.button-send {
+  width: 100%;
+  padding: 8px;
+  background: linear-gradient(to right, #000000, #004400);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-position 0.5s ease-in-out; /* Transição suave */
+  background-size: 200% 100%; /* Define o tamanho do background */
+  background-position: left; /* Define a posição inicial */
+  margin-top: 1em;
+}
+
+.inputs > button:hover,
+.button-send:hover {
+  background-position: right; /* Move a posição para criar o efeito */
+}
+
+/* button {
+  align-self: flex-end;
+} */
 
 .ingredient-input {
-  width: 300px;
+  width: 70%;
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  padding: 10px;
+  padding: 5px;
   border: 2px solid rgba(100, 100, 100, 0.5);
   border-radius: 5px;
   transition: border-color 0.3s;
@@ -57,4 +83,96 @@ button {
 .ingredient-input:focus {
   outline: none;
   border-color: #004400;
+}
+
+.form-image {
+  width: 14em;
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 3em;
+  gap: 1.5em;
+}
+
+.input-image {
+  background: linear-gradient(to right, #000000, #004400);
+  padding: 0;
+  display: block;
+  width: 100%;
+  height: 12em;
+  transition: background-position 0.5s ease-in-out; /* Transição suave */
+  background-size: 200% 100%; /* Define o tamanho do background */
+  background-position: left; /* Define a posição inicial */
+}
+
+.input-image:hover {
+  background-position: right; /* Move a posição para criar o efeito */
+}
+
+.input-image label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  cursor: pointer;
+}
+
+.input-image label p {
+  /* font-size: 20px; */
+  color: #fff;
+}
+
+.input-image label i {
+  font-size: 60px;
+  color: #fff;
+}
+
+.input-image small {
+  color: #fff;
+  font-size: 12px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.content-foods-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
+  width: 15em;
+  margin-bottom: 2em;
+}
+
+.content-foods-list > div {
+  width: 100%;
+}
+
+.actions-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.actions-buttons i {
+  font-size: 20px;
+  cursor: pointer;
+  color: aqua;
+}
+
+.actions-buttons i + i {
+  color: red;
+}
+
+input[type="number"] {
+  width: 52px;
+  height: 100%;
 }
