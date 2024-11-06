@@ -12,5 +12,6 @@ error_message TEXT                           -- Mensagem de erro (se houver)
 );
 
 show tables;
-
+SELECT DATABASE();
 describe chatgpt_logs;
+SELECT * FROM chatgpt_logs;
