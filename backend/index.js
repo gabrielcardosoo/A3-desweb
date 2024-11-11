@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mysql from 'mysql2';
 import fs from 'fs';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 dotenv.config({ path: './.env' });
 
@@ -64,10 +65,24 @@ function registrarLog(res) {
     });
 }
 
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY
+
 // Endpoint GET /pergunte-ao-chatgpt
 app.get('/pergunte-ao-chatgpt', (req, res) => {
     res.send('Hello World');
 });
 
+app.post('/pergunte-ao-gemini', async (req, res) => {
+    const genAI = new GoogleGenerativeAI(GEMINI_API_KEY)
+    const model = genAI.getGenerativeModel({
+      model: 'gemini-1.5-flash'
+    })
+    const { prompt } = req.body
+    const result = await model.generateContent(prompt)
+    res.json({completion: result.response.text()})
+  })
+
 // Inicia o servidor
 app.listen(PORT, () => console.log(`Servidor em execução na porta ${PORT}`));
+
+console.log(GEMINI_API_KEY)

@@ -13,10 +13,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "mysql2": "^3.11.4",
-    "openai": "^4.60.0"
+    "openai": "^4.71.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
