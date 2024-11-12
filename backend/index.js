@@ -6,6 +6,11 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 dotenv.config({ path: './.env' });
 
+import fetch, { Headers } from 'node-fetch';
+global.fetch = fetch;
+global.Headers = Headers;
+
+
 const app = express();
 app.use(express.json());
 
