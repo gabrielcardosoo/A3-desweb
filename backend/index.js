@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import mysql from 'mysql2';
 import fs from 'fs';
+import cors from 'cors';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 dotenv.config({ path: './.env' });
@@ -10,11 +11,14 @@ import fetch, { Headers } from 'node-fetch';
 global.fetch = fetch;
 global.Headers = Headers;
 
-
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const PORT = process.env.PORT || 3000;
+
+// Inicia o servidor
+app.listen(PORT, () => console.log(`Servidor em execução na porta ${PORT}`));
 
 // Configuração do pool de conexões do MySQL com SSL
 const pool = mysql.createPool({
@@ -73,21 +77,41 @@ function registrarLog(res) {
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY
 
 // Endpoint GET /pergunte-ao-chatgpt
-app.get('/pergunte-ao-chatgpt', (req, res) => {
-    res.send('Hello World');
+app.post('/pergunte-ao-gemini', async (req, res) => {
+    const { image, prompt } = req.body;
+
+    if (!image || !prompt) {
+        return res.status(400).json({ error: 'Imagem ou prompt não fornecidos' });
+    }
+
+    try {
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+        // Validação e limpeza do Base64
+        const cleanBase64 = image.replace(/^data:image\/\w+;base64,/, '');
+        
+        // //Salvar imagens localmente no nosso projeto
+        // const buffer = Buffer.from(cleanBase64, 'base64');
+        // if (!buffer || buffer.length === 0) {
+        //     return res.status(400).json({ error: 'Base64 inválido ou vazio' });
+        // }
+
+        // fs.writeFileSync('./food.png', buffer);
+        
+        const imagePart = {
+            inlineData: {
+              data: cleanBase64,
+              mimeType: "image/png",
+            },
+        };
+        
+        const result = await model.generateContent([prompt,imagePart]);
+
+        res.json({completion: result.response.text()})
+    } catch (error) {
+        console.error('Erro ao gerar conteúdo:', error);
+        res.status(500).json({ error: 'Erro ao gerar conteúdo', details: error.message });
+    }
 });
 
-app.post('/pergunte-ao-gemini', async (req, res) => {
-    const genAI = new GoogleGenerativeAI(GEMINI_API_KEY)
-    const model = genAI.getGenerativeModel({
-      model: 'gemini-1.5-flash'
-    })
-    const { prompt } = req.body
-    const result = await model.generateContent(prompt)
-    res.json({completion: result.response.text()})
-  })
-
-// Inicia o servidor
-app.listen(PORT, () => console.log(`Servidor em execução na porta ${PORT}`));
-
-console.log(GEMINI_API_KEY)

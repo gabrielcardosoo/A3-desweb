@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
 import './style/IngredientForm.css';
+import api from '../services/api';
 
 export default function Calculator() {
   const [listIngredients, setListIngredients] = useState([]);
@@ -8,6 +10,7 @@ export default function Calculator() {
   const [animatedText, setAnimatedText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [imageBase64, setImageBase64] = useState(null);
   const fileInputRef = useRef(null);
   const formImageRef = useRef(null);
   const inputsUpdateFoodsRef = useRef(null);
@@ -89,32 +92,62 @@ export default function Calculator() {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setSelectedFile(imageUrl);
+
+      fileToBase64(file).then((base64File) => {
+        setImageBase64(base64File);
+      }).catch((error) => {
+        console.error("Erro ao converter arquivo para Base64:", error);
+      });
     }
   };
 
+  const fileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result); // Pega apenas a parte Base64
+        reader.onerror = (error) => reject(error);
+    });
+};
+
   // Enviar Formulário contendo a imagem
-  const handleSubmitFormImage = (event) => {
+  const handleSubmitFormImage = async (event) => {
     event.preventDefault();
 
-    const foods = [
-      {
-        name: 'Arroz',
-        quantity: 100
-      },
-      {
-        name: 'Feijão',
-        quantity: 200
-      },
-      {
-        name: 'Carne',
-        quantity: 300
-      }
-    ]
+    try {
 
-    setListIngredients(foods);
+      const { data } = await api.post('/pergunte-ao-gemini', {
+        image: imageBase64,
+        prompt: "Quais alimentos vê nessa imagem e me dê uma quantidade de gramas estipuladas, forneça somente esse retorno em json e nada mais, por exemplo: [{comida: arroz, gramas: 100}, {comida: feijao, gramas: 150}]"
+      });
 
-    formImageRef.current.style.display = 'none';
-    inputsUpdateFoodsRef.current.classList.remove('d-none');
+      
+  
+      // const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Erro ao converter e enviar a imagem:", error);
+    }
+
+    // const foods = [
+    //   {
+    //     name: 'Arroz',
+    //     quantity: 100
+    //   },
+    //   {
+    //     name: 'Feijão',
+    //     quantity: 200
+    //   },
+    //   {
+    //     name: 'Carne',
+    //     quantity: 300
+    //   }
+    // ]
+
+    // setListIngredients(foods);
+
+    // formImageRef.current.style.display = 'none';
+    // inputsUpdateFoodsRef.current.classList.remove('d-none');
   }
 
   return (
