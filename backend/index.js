@@ -74,20 +74,19 @@ function registrarLog(res) {
     });
 }
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY
+// const GEMINI_API_KEY = process.env.GEMINI_API_KEY
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 // Endpoint GET /pergunte-ao-chatgpt
 app.post('/pergunte-ao-gemini', async (req, res) => {
     const { image, prompt } = req.body;
 
     if (!image || !prompt) {
-        return res.status(400).json({ error: 'Imagem ou prompt não fornecidos' });
+        return res.status(400).json({ result: 0, error: 'Imagem ou prompt não fornecidos' });
     }
 
     try {
-        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
         // Validação e limpeza do Base64
         const cleanBase64 = image.replace(/^data:image\/\w+;base64,/, '');
         
@@ -108,10 +107,23 @@ app.post('/pergunte-ao-gemini', async (req, res) => {
         
         const result = await model.generateContent([prompt,imagePart]);
 
-        res.json({completion: result.response.text()})
+        res.json({result: 1, completion: result.response.text()})
     } catch (error) {
         console.error('Erro ao gerar conteúdo:', error);
-        res.status(500).json({ error: 'Erro ao gerar conteúdo', details: error.message });
+        res.status(500).json({result: 0, error: 'Erro ao gerar conteúdo', details: error.message });
+    }
+});
+
+app.post('/calcular-calorias', async (req, res) => {
+    const { prompt } = req.body;
+
+    try {
+        const result = await model.generateContent(prompt);
+
+        console.log(result);
+        res.json({result: 1, response: result.response.text()})
+    } catch (error) {
+        return res.status(500).json({result: 0, error: 'Erro ao processar calculo pela IA', details: error.message})
     }
 });
 
