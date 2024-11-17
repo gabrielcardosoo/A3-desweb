@@ -34,7 +34,7 @@ html, body {
 }
 
 .inputs {
-  width: 15em;
+  width: 18em;
   display: flex;
   flex-direction: column;
   margin-bottom: 1em;
@@ -86,7 +86,7 @@ html, body {
 }
 
 .form-image {
-  width: 14em;
+  width: 18em;
   display: flex;
   flex-direction: column;
   align-items: center !important;
@@ -148,7 +148,7 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: 1.5em;
-  width: 15em;
+  width: 18em;
   margin-bottom: 2em;
 }
 
