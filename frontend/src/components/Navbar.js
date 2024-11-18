@@ -41,16 +41,24 @@ function Navbar({ user, onLogin, onLogout }) {
         <div className={`collapse navbar-collapse justify-content-center ${isMenuOpen ? 'show' : ''}`}>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/" onClick={refreshPage}>HOME</a>
+              <a className="nav-link" href="/" onClick={refreshPage}>
+                <i className="fas fa-home"></i> HOME
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#About">SOBRE</a>
+              <a className="nav-link" href="#About">
+                <i className="fas fa-info-circle"></i> SOBRE
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#IngredientForm">CALCULADORA</a>
+              <a className="nav-link" href="#IngredientForm">
+                <i className="fas fa-calculator"></i> CALCULADORA
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#integrantes">INTEGRANTES</a>
+              <a className="nav-link" href="#integrantes">
+                <i className="fas fa-users"></i> INTEGRANTES
+              </a>
             </li>
           </ul>
         </div>

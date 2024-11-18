@@ -22,20 +22,20 @@ body {
 
   /* Estilização do título "Integrantes" */
 .integ-title {
-    font-size: 35px;
-    color: rgba(255, 255, 255, 0.7);
-    padding: 10px 20px;
-    margin-left: 20px;
-    border: 2px solid rgba(100, 100, 100, 0.5);
-    border-radius: 30px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    cursor: pointer;
+  color: #1d5f0f !important;
+  padding: 8px 20px !important;
+  border: 2px solid !important;
+  border-radius: 30px !important;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
+  position: relative !important;
+  margin-bottom: 100px !important;
+  background-color: white;
   }
   
   .integ-title:hover {
-    color: #1d5f0f; /* Cor verde ao passar o mouse */
-    background-color: white; /* Fundo branco ao passar o mouse */
-    border-color: #1d5f0f; /* Muda a cor da borda para verde */
+    color: #ffffff !important; /* Cor verde ao passar o mouse */
+    background-color: #1d5f0f; /* Fundo branco ao passar o mouse */
+    border-color: white !important; /* Muda a cor da borda para verde */
   }
 
   .integ-header {

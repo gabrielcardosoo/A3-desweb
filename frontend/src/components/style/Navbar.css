@@ -1,105 +1,36 @@
-/* Estilos gerais para telas grandes */
-.my-navbar {
-    background-color: transparent; /* Transparente */
-    margin-top: 3rem;
-    padding: 2rem; /* Aqui você pode alterar o padding */
-    position: relative; /* Posição normal */
-    width: 100%; /* Largura total */
-    z-index: 1000; /* Acima de outros elementos */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap'); /* Importando a fonte Poppins */
+
+.my-navbar .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre ícone e texto */
+    color: #a7a7a7;
+    font-size: 1.6rem; /* Aumentando o tamanho da fonte */
+    font-family: 'Poppins', sans-serif; /* Nova fonte */
+    font-weight: 700; /* Peso da fonte */
+    transition: color 0.3s ease-in-out;
+    margin-right: 4rem; /* Espaçamento maior entre os itens */
 }
 
-.my-navbar .navbar-nav {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center; /* Centraliza os links */
+.my-navbar .nav-link:hover {
+    color: white; /* Mantemos o hover */
 }
 
-.my-navbar .navbar-brand {
-    margin-right: auto; /* Logo alinhado à esquerda */
+.my-navbar .nav-link i {
+    font-size: 1.4rem; /* Ajustando o tamanho do ícone */
+    color: inherit;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.my-navbar .nav-item .nav-link {
-    color: #a7a7a7; /* Cor dos links */
-    padding: 0.5rem 1rem;
-    font-size: 1.5rem;
-    font-family: 'Open Sans', sans-serif; /* Fonte Open Sans */
-    font-weight: 700; /* Ajuste o peso conforme necessário */
-    margin-right: 3rem; /* Espaçamento entre os links */
+.my-navbar .nav-link:hover i {
+    color: #f4b400; /* Cor amarela no ícone ao passar o mouse */
+    transform: scale(1.2); /* Animação de aumento no hover */
 }
 
-.my-navbar .nav-item .nav-link:hover {
-    color: white; /* Muda a cor ao passar o mouse */
-}
-
-.my-navbar {
-    position: relative;
-    width: 100%;
-    top: 0;
-}
-
-.nav-link {
-    position: relative; /* Necessário para o posicionamento do pseudo-elemento */
-    text-decoration: none; /* Remove o sublinhado padrão */
-    color: inherit; /* Herda a cor do texto */
-    overflow: hidden; /* Esconde o excesso do pseudo-elemento */
-}
-
-.nav-link::after {
-    content: ''; /* Necessário para criar o pseudo-elemento */
-    position: absolute;
-    left: 50%; /* Começa no meio do link */
-    bottom: 0; /* Posiciona na parte inferior do texto */
-    height: 2px; /* Espessura do sublinhado */
-    width: 100%; /* Inicia com largura total */
-    background: white; /* Cor igual à do texto */
-    transform: translateX(-50%) scaleX(0); /* Inicia invisível, no centro */
-    transition: transform 0.500s ease; /* Animação suave */
-}
-
-.nav-link:hover::after {
-    transform: translateX(-50%) scaleX(1); /* Preenche o sublinhado ao passar o mouse */
-}
-
-/* Estilo para a versão mobile (abaixo de 991px) */
+/* Reduzindo o espaçamento para dispositivos móveis */
 @media (max-width: 991px) {
-    .my-navbar .navbar-collapse {
-        position: absolute;
-        top: 60px; /* Ajusta a distância do topo */
-        right: 10px; /* Ajusta a posição à direita */
-        background-color: white; /* Cor de fundo para o dropdown */
-        border-radius: 8px;
-        padding: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ao redor do menu */
-    }
-
-    .my-navbar .navbar-toggler {
-        border: none; /* Remove a borda do botão de toggle */
-    }
-
-    .my-navbar .navbar-toggler-icon {
-        color: white;
-    }
-
-    .my-navbar .navbar-nav {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-    }
-
-    .my-navbar .nav-item {
-        margin: 10px 0;
-    }
-
-    .my-navbar .nav-item .nav-link {
-        color: black; /* Links em preto no menu colapsado */
-        font-size: 1rem;
-    }
-
-    .my-navbar .nav-item .nav-link:hover {
-        color: rgb(109, 109, 109);
-    }
-
-    .my-navbar .navbar-collapse.show {
-        display: block !important; /* Força o dropdown a aparecer */
+    .my-navbar .nav-link {
+        margin-right: 0; /* Remove o espaçamento lateral no mobile */
+        margin-bottom: 1rem; /* Adiciona espaçamento vertical no menu colapsado */
     }
 }

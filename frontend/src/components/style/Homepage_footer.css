@@ -13,6 +13,13 @@
     flex-direction: column;
     align-items: center; /* Alinha o ícone e o texto no centro */
     text-align: center; /* Garante que o texto fique centralizado */
+    opacity: 0.7; /* Círculos inativos têm menos destaque */
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease; /* Suaviza transições */
+}
+
+.circle-container.active {
+    opacity: 1; /* Círculo ativo com destaque */
+    transform: scale(1.2); /* Ampliação suave para o círculo ativo */
 }
 
 .circle {
@@ -21,51 +28,49 @@
     align-items: center; /* Centraliza o ícone dentro do círculo */
     box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.3); /* Sombra leve */
     border: 2px solid white; /* Borda branca */
-    background-color: transparent; /* Fundo transparente */
+    background-color: transparent; /* Fundo padrão transparente */
     border-radius: 50%; /* Torna o elemento circular */
-    width: 8rem; /* Tamanho ajustado fixo em rem para telas grandes */
+    width: 8rem; /* Tamanho fixo */
     height: 8rem; /* Altura igual à largura */
     margin-bottom: 10px; /* Espaço entre o círculo e o texto */
-    transition: all 0.3s ease; /* Suaviza a transição */
+    transition: all 0.3s ease; /* Suaviza todas as transições */
+}
+
+.circle-container.active .circle {
+    background-color: white; /* Preenche o círculo ativo com branco */
+    border-color: white; /* A borda do ativo também fica branca */
 }
 
 .icon {
-    font-size: 4rem; /* Tamanho fixo em rem para melhor controle em telas grandes */
+    font-size: 4rem; /* Tamanho fixo do ícone */
     color: white; /* Cor padrão do ícone */
     display: flex;
     justify-content: center;
     align-items: center; /* Garante que o ícone fique centralizado */
     line-height: 1; /* Evita interferências no alinhamento */
-    transition: color 0.3s ease; /* Suaviza a transição da cor */
+    transition: color 0.3s ease; /* Suaviza transição de cor */
+}
+
+.circle-container.active .icon {
+    color: #1d5f0f; /* Ícone do ativo fica verde escuro */
 }
 
 .circle-text {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1rem; /* Ajuste de tamanho do texto para ser mais consistente */
-    color: white; /* Cor do texto */
-    transition: color 0.3s ease; /* Suaviza a transição da cor */
+    font-size: 1rem; /* Ajuste de tamanho do texto */
+    color: white; /* Cor padrão do texto */
+    transition: color 0.3s ease; /* Suaviza transição da cor */
     text-align: center; /* Centraliza o texto */
 }
 
-/* Efeitos de hover */
-.circle:hover {
-    border-color: #1d5f0f;
-    background-color: white;
-    box-shadow: 0px 0px 20px rgba(252, 252, 252, 0.4);
-}
-
-.circle:hover .icon {
-    color: #1d5f0f;
-}
-
-.circle:hover .circle-text {
-    color: #1d5f0f;
+.circle-container.active .circle-text {
+    color: white; /* Texto do ativo fica verde escuro */
 }
 
 /* Ajustes para telas menores */
 @media (max-width: 768px) {
     .circle {
-        width: 12vw; /* Tamanho responsivo para telas médias */
+        width: 12vw; /* Tamanho responsivo */
         height: 12vw;
     }
 
@@ -80,7 +85,7 @@
 
 @media (max-width: 480px) {
     .circle {
-        width: 20vw; /* Tamanho responsivo para telas pequenas */
+        width: 20vw; /* Tamanho responsivo */
         height: 20vw;
     }
 

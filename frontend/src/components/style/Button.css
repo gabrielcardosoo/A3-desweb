@@ -1,13 +1,16 @@
 .button-container {
-    position: relative; /* Define o contexto para o botão */
+    display: flex; /* Torna o contêiner um flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    top: 0; /* Necessário para posicionamento central */
+    left: 0; /* Necessário para posicionamento central */
+    width: 100%; /* Garante que o contêiner ocupe toda a largura */
+    height: 100%; /* Garante que o contêiner ocupe toda a altura */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
 }
 
 .btn-custom {
-    box-shadow: 0px 5px 20px rgba(0, 0, 0); /* Sombra leve */
-    position: absolute; /* Posição inicial do botão. */
-    right: 3%; /* Alinha à direita do contêiner pai */
-    display: inline-flex; /* Flex para alinhar ícone e texto */
-    align-items: center; /* Alinha verticalmente os itens */
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3); /* Sombra leve */
     padding: 10px 20px;
     font-family: 'League Spartan', sans-serif;
     font-weight: 700;
@@ -34,32 +37,17 @@
     color: #1d5f0f; /* Muda a cor do ícone para verde ao passar o mouse */
 }
 
-/* Responsividade: Tamanhos de tela menores */
-@media (max-width: 1000px) {
-    .btn-custom {
-        position: fixed; /* Fixa o botão na tela */
-        bottom: 20px; /* Fixa o botão no rodapé */
-        left: 50%; /* Move o botão para o centro */
-        transform: translateX(-50%); /* Centraliza o botão */
-        font-size: 1.2rem; /* Ajusta o tamanho da fonte */
-        padding: 10px 20px; /* Mantém o padding */
-        width: auto; /* Define a largura automática */
-        right: auto; /* Remove o alinhamento à direita */
-    }
-}
-
+/* Ajustes para telas menores */
 @media (max-width: 768px) {
     .btn-custom {
-        font-size: 1rem; /* Reduz o tamanho da fonte para tablets */
-        padding: 8px 16px; /* Reduz o padding */
+        font-size: 1.2rem; /* Ajusta o tamanho da fonte */
+        padding: 10px 20px; /* Mantém o padding */
     }
 }
 
 @media (max-width: 480px) {
     .btn-custom {
-        font-size: 0.9rem; /* Tamanho menor da fonte para smartphones */
-        padding: 6px 12px; /* Menos espaçamento */
-        width: 90%; /* O botão ocupa 90% da largura */
-        bottom: 15px; /* Ajusta a distância do rodapé */
+        font-size: 1rem; /* Ajusta o tamanho da fonte para telas pequenas */
+        padding: 8px 16px; /* Reduz o padding */
     }
 }

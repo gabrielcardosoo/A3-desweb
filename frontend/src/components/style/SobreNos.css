@@ -15,22 +15,24 @@
 }
 
 .title-sobre {
+  border-color: #1d5f0f; /* Muda a cor da borda para verde */
   margin-bottom: 40px;
   text-align: center;
   font-size: 35px;
-  color: rgb(136, 136, 136);
+  color: #1d5f0f; /* Cor verde ao passar o mouse */
   padding: 10px 20px;
   margin-left: 20px;
-  border: 2px solid rgb(136, 136, 136);
+  border: 2px solid;
   border-radius: 30px;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   cursor: pointer;
+  background-color: white; /* Fundo branco ao passar o mouse */
 }
 
 .title-sobre:hover {
-  color: #1d5f0f; /* Cor verde ao passar o mouse */
-  background-color: white; /* Fundo branco ao passar o mouse */
-  border-color: #1d5f0f; /* Muda a cor da borda para verde */
+  color: #ffffff !important; /* Cor verde ao passar o mouse */
+    background-color: #1d5f0f; /* Fundo branco ao passar o mouse */
+    border-color: white !important; /* Muda a cor da borda para verde */
 }
 
 .subtitle {
