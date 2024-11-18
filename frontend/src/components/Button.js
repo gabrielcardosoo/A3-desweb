@@ -3,7 +3,7 @@ import '../components/style/Button.css';
 
 function Button() {
   const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
+    const aboutSection = document.getElementById('IngredientForm');
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth' }); // Rolagem suave
     }
