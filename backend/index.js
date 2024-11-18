@@ -5,13 +5,19 @@ import bcrypt from 'bcrypt';
 import { executeQuery } from './db.js';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from 'dotenv';
+import fetch, { Headers } from 'node-fetch';
+global.fetch = fetch;
+global.Headers = Headers;
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
 
+app.use(express.json({ limit: '50mb' })); // Aumente o limite conforme necessário
+app.use(express.urlencoded({ limit: '50mb', extended: true })); 
 app.use(express.json());
+
 app.use(cors({
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -168,6 +174,60 @@ app.post('/logout', authenticateToken, async (req, res) => {
         res.status(500).json({ message: 'Erro ao fazer logout' });
     }
 });
+
+// const GEMINI_API_KEY = process.env.GEMINI_API_KEY
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+// Endpoint GET /pergunte-ao-chatgpt
+app.post('/pergunte-ao-gemini', async (req, res) => {
+    const { image, prompt } = req.body;
+
+    if (!image || !prompt) {
+        return res.status(400).json({ result: 0, error: 'Imagem ou prompt não fornecidos' });
+    }
+
+    try {
+        // Validação e limpeza do Base64
+        const cleanBase64 = image.replace(/^data:image\/\w+;base64,/, '');
+        
+        // //Salvar imagens localmente no nosso projeto
+        // const buffer = Buffer.from(cleanBase64, 'base64');
+        // if (!buffer || buffer.length === 0) {
+        //     return res.status(400).json({ error: 'Base64 inválido ou vazio' });
+        // }
+
+        // fs.writeFileSync('./food.png', buffer);
+        
+        const imagePart = {
+            inlineData: {
+              data: cleanBase64,
+              mimeType: "image/png",
+            },
+        };
+        
+        const result = await model.generateContent([prompt,imagePart]);
+
+        res.json({result: 1, completion: result.response.text()})
+    } catch (error) {
+        console.error('Erro ao gerar conteúdo:', error);
+        res.status(500).json({result: 0, error: 'Erro ao gerar conteúdo', details: error.message });
+    }
+});
+
+app.post('/calcular-calorias', async (req, res) => {
+    const { prompt } = req.body;
+
+    try {
+        const result = await model.generateContent(prompt);
+
+        console.log(result);
+        res.json({result: 1, response: result.response.text()})
+    } catch (error) {
+        return res.status(500).json({result: 0, error: 'Erro ao processar calculo pela IA', details: error.message})
+    }
+});
+
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
