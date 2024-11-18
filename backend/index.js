@@ -124,7 +124,6 @@ app.post('/login', async (req, res) => {
             'SELECT * FROM users WHERE email = ?',
             [email]
         );
-        console.log(users);
 
         if (users.length === 0) {
             return res.status(401).json({ message: 'Usuario não encontrado' });
@@ -215,19 +214,74 @@ app.post('/pergunte-ao-gemini', async (req, res) => {
     }
 });
 
+const savePrompt = async ({userId, image, result, ingredients}) => {
+    ingredients = JSON.stringify(ingredients)
+    const query = `
+        INSERT INTO logs_gemine (client_id, image,result, ingredientes)
+        VALUES (?, ?, ?, ?)
+    `;
+    try {
+        await executeQuery(query, [userId, image, result, ingredients]);
+        return true;
+    } catch (error) {
+        console.error('Erro ao salvar prompt:', error);
+        return false;
+    }
+}
+
 app.post('/calcular-calorias', async (req, res) => {
     const { prompt } = req.body;
+    const { image } = req.body;
+    const {user} = req.body;
 
     try {
         const result = await model.generateContent(prompt);
 
-        console.log(result);
         res.json({result: 1, response: result.response.text()})
+
+        if (user.id) {
+            let ingredients =  prompt.split("```json");
+            ingredients = ingredients[1].split("```")[0].trim();
+            ingredients = JSON.parse(ingredients)
+            savePrompt({userId: user.id, image, result: result, ingredients: ingredients})
+        }
+
     } catch (error) {
         return res.status(500).json({result: 0, error: 'Erro ao processar calculo pela IA', details: error.message})
     }
 });
 
+app.get('/logs/:userId', authenticateToken, async (req, res) => {
+    console.log('aqui2');
+    try {
+        const userId = req.params.userId;
+      
+        // Verifica se o usuário está tentando acessar seus próprios logs
+        if (req.user.id !== parseInt(userId)) {
+            return res.status(403).json({ 
+            message: 'Acesso não autorizado' 
+            });
+        }
+  
+        const logs = await executeQuery(
+            'SELECT id, image, datetime, ingredientes, result  FROM logs_gemine WHERE client_id = ? ORDER BY datetime DESC',
+            [userId]
+        );
+
+        if (logs.length === 0) {
+            return res.json({ message: 'Nenhum log encontrado' });
+        }
+        
+        res.json(logs);
+
+    } catch (error) {
+    console.error('Erro ao buscar logs:', error);
+
+        res.status(500).json({ 
+            message: 'Erro ao buscar histórico de logs' 
+        });
+        }
+  });
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);

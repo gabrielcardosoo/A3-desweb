@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route,   Navigate } from 'react-router-dom';
 import './App.css';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Navbar from './components/Navbar';
@@ -9,7 +9,11 @@ import IntegrantComponents from './components/Integrant_components';
 import IngredientForm from './components/IngredientForm';
 import AuthPage from './components/AuthPage';
 import Footer from './components/Footer';
+<<<<<<< HEAD
 import Button from './components/Button';
+=======
+import HistoryPage from './components/HistoryPage';
+>>>>>>> 2f7fd29ab38c91955877b5459c5e0f9f9ad6139f
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -55,7 +59,8 @@ function AppContent() {
       updateUser({
         isLoggedIn: true,
         name: data.user.name,
-        token: data.token
+        token: data.token,
+        id : data.user.id
       });
 
       return data;
@@ -91,7 +96,8 @@ function AppContent() {
         updateUser({
           isLoggedIn: true,
           name: data.user.name,
-          token: data.token
+          token: data.token,
+          id : data.user.id
         });
       }
 
@@ -109,8 +115,37 @@ function AppContent() {
     updateUser({
       isLoggedIn: false,
       name: '',
-      token: null
+      token: null,
+      id: null
     });
+
+  };
+
+  const fetchUserLogs = async () => {
+    try {
+      if (!user.isLoggedIn || !user.id) {
+        throw new Error('Usuário não está logado');
+      }
+
+      const response = await fetch(`${API_BASE_URL}/logs/${user.id}`, {
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Erro ao buscar logs');
+      }
+
+      const data = await response.json();
+      console.log(data);
+      return data;
+
+    } catch (error) {
+      console.error('Erro ao buscar logs:', error);
+      throw error;
+    }
   };
 
   return (
@@ -127,6 +162,7 @@ function AppContent() {
             <Button />
             <IngredientForm />
             <About />
+            <IngredientForm user={user}  />
             <IntegrantComponents />
             <Footer />
           </>
@@ -140,10 +176,28 @@ function AppContent() {
             />
           } 
         />
+        <Route 
+          path="/history" 
+          element={
+            <ProtectedRoute>
+              <HistoryPage fetchLogs = {fetchUserLogs} />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );
 }
+// Componente ProtectedRoute (se ainda não tiver)
+const ProtectedRoute = ({ children }) => {
+  const { user } = useAuth();
+  
+  if (!user.isLoggedIn) {
+    return <Navigate to="/auth" replace />;
+  }
+  
+  return children;
+};
 
 function App() {
   return (

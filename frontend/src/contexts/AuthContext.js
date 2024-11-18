@@ -5,6 +5,7 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({
     isLoggedIn: false,
+    id: null,         // Adicionando ID
     name: '',
     token: null
   });
@@ -12,16 +13,23 @@ export const AuthProvider = ({ children }) => {
   const updateUser = (userData) => {
     console.log('Atualizando usuário:', userData);
     setUser(userData);
+    // Se precisar salvar no localStorage também
+    if (userData.isLoggedIn) {
+      localStorage.setItem('userData', JSON.stringify({
+        id: userData.id,
+        name: userData.name
+      }));
+    }
   };
 
   useEffect(() => {
     const token = localStorage.getItem('userToken');
     if (token) {
-      // Recupera os dados do usuário se houver um token
       const userData = JSON.parse(localStorage.getItem('userData') || '{}');
       if (userData.name) {
         setUser({
           isLoggedIn: true,
+          id: userData.id,    // Recuperando ID
           name: userData.name,
           token
         });
