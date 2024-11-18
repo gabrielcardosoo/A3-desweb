@@ -89,7 +89,7 @@ const IntegrantComponents = () => {
             <h3>{member.name}</h3>
             <p>{member.position}</p>
             <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="linkedin-button">
-            <i className="fa-brands fa-linkedin" style={{ color: '#ffffff', fontSize: '5rem'}}></i>  
+            <i className="fa-brands fa-linkedin" style={{ color: '#ffffff', fontSize: '4rem'}}></i>  
             </a>
           </div>
         ))}
