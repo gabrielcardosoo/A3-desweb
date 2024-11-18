@@ -1,93 +1,174 @@
-import dotenv from 'dotenv';
 import express from 'express';
-import mysql from 'mysql2';
-import fs from 'fs';
+import cors from 'cors';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import { executeQuery } from './db.js';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import dotenv from 'dotenv';
 
-dotenv.config({ path: './.env' });
-
-import fetch, { Headers } from 'node-fetch';
-global.fetch = fetch;
-global.Headers = Headers;
-
+dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT;
+
 app.use(express.json());
-
-const PORT = process.env.PORT || 3000;
-
-// Configuração do pool de conexões do MySQL com SSL
-const pool = mysql.createPool({
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    ssl: {
-        ca: fs.readFileSync('./certs/ca.pem') // Verifique se o arquivo ca.pem está no caminho correto
-    }
-});
-
-// Endpoint POST /consultar
-app.post('/consultar', (req, res) => {
-    pool.query('SELECT 1', (pingErr) => {
-        if (pingErr) {
-            console.error('Conexão perdida. Erro ao executar ping:', pingErr);
-            return res.status(500).json({ error: 'Erro ao conectar ao banco de dados' });
-        }
-        registrarLog(res);
-    });
-});
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 // Função para registrar log
-function registrarLog(res) {
-    const logQuery = `
+async function registrarLog(requestId, userInput, response, logLevel = 'INFO') {
+    const query = `
         INSERT INTO chatgpt_logs (request_id, user_input, response, log_level)
         VALUES (?, ?, ?, ?)
     `;
-
-    const requestId = 'req-' + Date.now();
-    const userInput = '/consultar';
-    const response = 'Consulta executada com sucesso';
-    const logLevel = 'INFO';
-
-    pool.getConnection((err, connection) => {
-        if (err) {
-            console.error('Erro ao obter conexão do pool:', err);
-            return res.status(500).json({ error: 'Erro ao registrar log' });
-        }
-
-        connection.query(logQuery, [requestId, userInput, response, logLevel], (queryErr) => {
-            connection.release();
-
-            if (queryErr) {
-                console.error('Erro ao registrar log:', queryErr);
-                return res.status(500).json({ error: 'Erro ao registrar log' });
-            }
-
-            res.status(200).json({ message: 'Consulta executada com sucesso', requestId });
-        });
-    });
+    
+    try {
+        await executeQuery(query, [requestId, userInput, response, logLevel]);
+        return true;
+    } catch (error) {
+        console.error('Erro ao registrar log:', error);
+        return false;
+    }
 }
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY
+// Middleware de autenticação
+const authenticateToken = async (req, res, next) => {
+    try {
+        const token = req.headers.authorization?.split(' ')[1];
+        if (!token) {
+            return res.status(401).json({ message: 'Token não fornecido' });
+        }
 
-// Endpoint GET /pergunte-ao-chatgpt
-app.get('/pergunte-ao-chatgpt', (req, res) => {
-    res.send('Hello World');
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        
+        const user = await executeQuery(
+            'SELECT id, name, email FROM users WHERE id = ? AND current_token = ?',
+            [decoded.userId, token]
+        );
+
+        if (!user[0]) {
+            return res.status(401).json({ message: 'Token inválido' });
+        }
+
+        req.user = user[0];
+        next();
+    } catch (error) {
+        console.error('Erro na autenticação:', error);
+        res.status(403).json({ message: 'Token inválido ou expirado' });
+    }
+};
+
+// Rota de criação de usuário
+app.post('/create-user', async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
+
+        if (!name || !email || !password) {
+            return res.status(400).json({ message: 'Dados incompletos' });
+        }
+
+        const existingUser = await executeQuery(
+            'SELECT id FROM users WHERE email = ?',
+            [email]
+        );
+
+        if (existingUser.length > 0) {
+            return res.status(400).json({ message: 'Email já cadastrado' });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+        
+        const result = await executeQuery(
+            'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
+            [name, email, hashedPassword]
+        );
+
+        const token = jwt.sign(
+            { userId: result.insertId },
+            process.env.JWT_SECRET,
+            { expiresIn: '24h' }
+        );
+
+        await executeQuery(
+            'UPDATE users SET current_token = ? WHERE id = ?',
+            [token, result.insertId]
+        );
+
+        res.status(201).json({
+            message: 'Usuário criado com sucesso',
+            user: { id: result.insertId, name, email },
+            token
+        });
+
+    } catch (error) {
+        console.error('Erro ao criar usuário:', error);
+        res.status(500).json({ message: 'Erro ao criar usuário' });
+    }
 });
 
-app.post('/pergunte-ao-gemini', async (req, res) => {
-    const genAI = new GoogleGenerativeAI(GEMINI_API_KEY)
-    const model = genAI.getGenerativeModel({
-      model: 'gemini-1.5-flash'
-    })
-    const { prompt } = req.body
-    const result = await model.generateContent(prompt)
-    res.json({completion: result.response.text()})
-  })
+// Rota de login
+app.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
-// Inicia o servidor
-app.listen(PORT, () => console.log(`Servidor em execução na porta ${PORT}`));
+        const users = await executeQuery(
+            'SELECT * FROM users WHERE email = ?',
+            [email]
+        );
+        console.log(users);
 
-console.log(GEMINI_API_KEY)
+        if (users.length === 0) {
+            return res.status(401).json({ message: 'Usuario não encontrado' });
+        }
+        const user = users[0];
+        if (!user || !(await bcrypt.compare(password, user.password))) {
+            return res.status(401).json({ message: 'Credenciais inválidas' });
+        }
+
+        const token = jwt.sign(
+            { userId: user.id },
+            process.env.JWT_SECRET,
+            { expiresIn: '24h' }
+        );
+
+        await executeQuery(
+            'UPDATE users SET current_token = ? WHERE id = ?',
+            [token, user.id]
+        );
+
+        res.json({
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email
+            },
+            token
+        });
+
+    } catch (error) {
+        console.error('Erro no login:', error);
+        res.status(500).json({ message: 'Erro interno do servidor' });
+    }
+});
+
+// Rota de logout
+app.post('/logout', authenticateToken, async (req, res) => {
+    try {
+        await executeQuery(
+            'UPDATE users SET current_token = NULL WHERE id = ?',
+            [req.user.id]
+        );
+        
+        res.json({ message: 'Logout realizado com sucesso' });
+    } catch (error) {
+        console.error('Erro ao fazer logout:', error);
+        res.status(500).json({ message: 'Erro ao fazer logout' });
+    }
+});
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
