@@ -9,11 +9,8 @@ import IntegrantComponents from './components/Integrant_components';
 import IngredientForm from './components/IngredientForm';
 import AuthPage from './components/AuthPage';
 import Footer from './components/Footer';
-<<<<<<< HEAD
 import Button from './components/Button';
-=======
 import HistoryPage from './components/HistoryPage';
->>>>>>> 2f7fd29ab38c91955877b5459c5e0f9f9ad6139f
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
