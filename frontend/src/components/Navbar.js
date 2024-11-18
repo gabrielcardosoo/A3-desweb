@@ -44,7 +44,7 @@ function Navbar({ user, onLogin, onLogout }) {
               <a className="nav-link" href="/" onClick={refreshPage}>HOME</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#about">SOBRE</a>
+              <a className="nav-link" href="#About">SOBRE</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#IngredientForm">CALCULADORA</a>

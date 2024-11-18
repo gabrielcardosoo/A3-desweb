@@ -9,7 +9,7 @@ import IntegrantComponents from './Integrant_components';
 
 function MainContent() {
   return (
-    <div style={{ minHeight: '100vh', paddingBottom: '50px' }}>
+    <div style={{ minHeight: '50vh', paddingBottom: '50px' }}>
       <Description />
       <Button />
       <HomepageFooter />
