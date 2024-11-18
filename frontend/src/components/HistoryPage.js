@@ -17,7 +17,10 @@ const HistoryPage = ({ user, fetchLogs }) => {
       setError(null);
       
       const logsData = await fetchLogs();
-      console.log('Logs carregados:', logsData);
+      if (logsData.message === 'Nenhum log encontrado') {
+        throw new Error('Nenhum log encontrado'); 
+      }
+      console.log('Logs carregados:', logsData);  
       setLogs(logsData);
       
     } catch (error) {
