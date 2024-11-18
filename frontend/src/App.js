@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Navbar from './components/Navbar';
-import About from './components/About_components';
+import About from './components/SobreNos';
 import MainContent from './components/MainContent';
 import IntegrantComponents from './components/Integrant_components';
 import IngredientForm from './components/IngredientForm';
 import AuthPage from './components/AuthPage';
+import Footer from './components/Footer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -125,9 +126,11 @@ function AppContent() {
         <Route path="/" element={
           <>
             <MainContent />
+            <IngredientForm />
             <About />
             <IngredientForm user={user}  />
             <IntegrantComponents />
+            <Footer />
           </>
         } />
         <Route 

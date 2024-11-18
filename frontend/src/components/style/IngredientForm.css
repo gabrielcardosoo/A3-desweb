@@ -24,7 +24,7 @@ html, body {
   border-radius: 30px !important;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
   position: relative !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 100px !important;
 }
 
 .calculator-title:hover {
@@ -50,7 +50,7 @@ html, body {
 .button-send {
   width: 100%;
   padding: 8px;
-  background: linear-gradient(to right, #000000, #004400);
+  background-color: rgb(153, 153, 153) !important;
   color: white;
   border: none;
   border-radius: 5px;
@@ -63,7 +63,8 @@ html, body {
 
 .inputs > button:hover,
 .button-send:hover {
-  background-position: right; /* Move a posição para criar o efeito */
+  background-color: white !important;
+  color: black !important;
 }
 
 /* button {
@@ -82,7 +83,7 @@ html, body {
 
 .ingredient-input:focus {
   outline: none;
-  border-color: #004400;
+  border-color: #fcfcfc;
 }
 
 .form-image {
@@ -96,7 +97,8 @@ html, body {
 }
 
 .input-image {
-  background: linear-gradient(to right, #000000, #004400);
+  border: 2px solid white;
+  background: rgb(24, 24, 24);
   padding: 0;
   display: block;
   width: 100%;

@@ -58,8 +58,8 @@ body {
     display: inline-block; /* Para aplicar margens corretamente */
     margin: 0 auto; /* Centraliza a imagem */
     border-radius: 100%; /* Arredonda os cantos da imagem */
-    width: 500px; /* Ajuste a largura da imagem conforme necessário */
-    height: 500px; /* Ajuste a altura da imagem conforme necessário */
+    width: 300px; /* Ajuste a largura da imagem conforme necessário */
+    height: 300px; /* Ajuste a altura da imagem conforme necessário */
     object-fit: cover; /* Garante que a imagem cubra a área */
   }
   
