@@ -3,7 +3,7 @@ import './style/IngredientForm.css';
 import api from '../services/api';
 import Loading from './Loading';
 
-export default function Calculator() {
+export default function Calculator({user}) {
   const [isLoading, setIsLoading] = useState(false);
   const [listIngredients, setListIngredients] = useState([]);
   const [ingredient, setIngredient] = useState({ name: '', quantity: undefined });
@@ -160,7 +160,9 @@ export default function Calculator() {
       let formattedString = "```json\n" + JSON.stringify(listIngredients, null, 2) + "\n```";
   
       const { data } = await api.post('/calcular-calorias', {
-        prompt: `Calcule a caloria total de todos os alimentos juntos de acordo com a grama especificada e me retorne somente o valor da caloria: ${formattedString}, OBS: assuma valores médios comuns de caloria por gramas para os alimentos. E assuma 'name' como o alimento e 'quantity' como a quantidade de calorias. Me retorno somente o valor, por exemplo: 275 kcal.`
+        prompt: `Calcule a caloria total de todos os alimentos juntos de acordo com a grama especificada e me retorne somente o valor da caloria: ${formattedString}, OBS: assuma valores médios comuns de caloria por gramas para os alimentos. E assuma 'name' como o alimento e 'quantity' como a quantidade de calorias. Me retorno somente o valor, por exemplo: 275 kcal.`,
+        image: imageBase64,
+        user: user
       });
   
       if(data.result) {
@@ -173,6 +175,7 @@ export default function Calculator() {
             <h1 class='text-center'>De acordo com os alimentos mencionados, <br/> a comida possuí aproximadamente: <br/> <strong>${data.response} Calorias</strong></h1>
           `;
       }
+
 
       setIsLoading(false);
     } catch (error) {

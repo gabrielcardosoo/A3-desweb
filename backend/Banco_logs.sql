@@ -30,3 +30,14 @@ CREATE TABLE users (
 -- Índices para melhor performance
 CREATE INDEX idx_email ON users(email);
 CREATE INDEX idx_current_token ON users(current_token(255));
+
+
+CREATE TABLE logs_gemine (
+    id SERIAL PRIMARY KEY, -- Coluna ID como chave primária
+    client_id INT NOT NULL, -- Coluna client_id como chave estrangeira
+    image TEXT NOT NULL, -- Coluna para armazenar imagem em Base64
+    datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Coluna com a data e hora da requisição
+    ingredientes JSON NOT NULL, -- Coluna para armazenar um JSON
+    result TEXT NOT NULL, -- Coluna para armazenar uma string
+    FOREIGN KEY (client_id) REFERENCES clients(id) -- Vincula client_id como FK para a tabela clients
+);

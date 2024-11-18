@@ -53,7 +53,8 @@ function AppContent() {
       updateUser({
         isLoggedIn: true,
         name: data.user.name,
-        token: data.token
+        token: data.token,
+        id : data.user.id
       });
 
       return data;
@@ -89,7 +90,8 @@ function AppContent() {
         updateUser({
           isLoggedIn: true,
           name: data.user.name,
-          token: data.token
+          token: data.token,
+          id : data.user.id
         });
       }
 
@@ -107,7 +109,8 @@ function AppContent() {
     updateUser({
       isLoggedIn: false,
       name: '',
-      token: null
+      token: null,
+      id: null
     });
   };
 
@@ -123,7 +126,7 @@ function AppContent() {
           <>
             <MainContent />
             <About />
-            <IngredientForm />
+            <IngredientForm user={user}  />
             <IntegrantComponents />
           </>
         } />

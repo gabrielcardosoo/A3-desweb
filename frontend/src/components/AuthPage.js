@@ -11,7 +11,8 @@ const AuthPage = ({ onLogin, onCreateUser }) => {
     email: '',
     password: '',
     name: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    id : null
   });
 
   const handleInputChange = (e) => {
