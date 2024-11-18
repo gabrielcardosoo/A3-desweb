@@ -1,11 +1,12 @@
 .auth-container {
-    min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f8f9fa;
+    align-items: flex-start; /* Centraliza verticalmente */
+    margin-top: 10vh;
+    justify-content: center; /* Centraliza horizontalmente */
+    min-height: 100vh;
     padding: 20px;
-  }
+}
+
   
   .auth-box {
     background: white;
