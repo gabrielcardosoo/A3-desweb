@@ -1,0 +1,146 @@
+/* Container principal */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Estilos do Avatar */
+.user-avatar {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  
+}
+
+.user-avatar:hover {
+  background-color: #e9ecef;
+  border-color: #ced4da;
+  transform: scale(1.1);
+}
+
+.user-initial {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #6c757d;
+  line-height: 1;
+  user-select: none;
+}
+
+.user-icon {
+  width: 24px;
+  height: 24px;
+  color: #6c757d;
+}
+
+/* Estilos do Menu Dropdown */
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  min-width: 200px;
+  padding: 0.8rem 0;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.375rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  display: none;
+  z-index: 1000;
+}
+
+.dropdown-menu.show {
+  display: block;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Header do menu com nome do usuário */
+.dropdown-header {
+  padding: 0.5rem 1rem;
+  color: #6c757d;
+  white-space: nowrap;
+}
+
+.user-name {
+  font-weight: 500;
+  color: #212529;
+}
+
+/* Itens do menu */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #16181b;
+}
+
+.dropdown-item.text-danger {
+  color: #dc3545;
+}
+
+.dropdown-item.text-danger:hover {
+  background-color: #fff5f5;
+}
+
+/* Ícones dentro do menu */
+.menu-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 0.5rem;
+}
+
+/* Linha divisória */
+.dropdown-divider {
+  height: 0;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  border-top: 1px solid #e9ecef;
+}
+
+/* Animação de fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 575.98px) {
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .user-initial {
+    font-size: 1rem;
+  }
+  
+  .user-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .dropdown-menu {
+    min-width: 180px;
+  }
+}
