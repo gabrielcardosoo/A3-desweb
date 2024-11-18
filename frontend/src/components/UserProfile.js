@@ -13,11 +13,14 @@ const UserProfile = ({ user, onHistory, onLogout }) => {
     if (!name) return '';
     return name.charAt(0).toUpperCase();
   };
-
-  useEffect(() => {
-    console.log('Estado do usuário atualizado no userProfile:', user);
-  }, [user]);
-
+  const handleHistory = () => {
+    if (isLoggedIn) {
+      navigate('/history');
+    }
+    else {
+      navigate('/auth');
+    }
+  };
   // Fecha o menu quando clicar fora dele
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -60,7 +63,7 @@ const UserProfile = ({ user, onHistory, onLogout }) => {
             <button 
               className="dropdown-item" 
               onClick={() => {
-                onHistory();
+                handleHistory();
                 setIsOpen(false);
               }}
             >

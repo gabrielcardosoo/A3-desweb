@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import UserProfile from "./UserProfile";
 import './style/Navbar.css';
 
-function Navbar({ user, onLogin, onLogout }) {
+function Navbar({ user, onLogout }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navbarRef = useRef(null);
 

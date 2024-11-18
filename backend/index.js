@@ -251,6 +251,37 @@ app.post('/calcular-calorias', async (req, res) => {
     }
 });
 
+app.get('/logs/:userId', authenticateToken, async (req, res) => {
+    console.log('aqui2');
+    try {
+        const userId = req.params.userId;
+      
+        // Verifica se o usuário está tentando acessar seus próprios logs
+        if (req.user.id !== parseInt(userId)) {
+            return res.status(403).json({ 
+            message: 'Acesso não autorizado' 
+            });
+        }
+  
+        const logs = await executeQuery(
+            'SELECT id, image, datetime, ingredientes, result  FROM logs_gemine WHERE client_id = ? ORDER BY datetime DESC',
+            [userId]
+        );
+
+        if (logs.length === 0) {
+            return res.json({ message: 'Nenhum log encontrado' });
+        }
+        
+        res.json(logs);
+
+    } catch (error) {
+    console.error('Erro ao buscar logs:', error);
+
+        res.status(500).json({ 
+            message: 'Erro ao buscar histórico de logs' 
+        });
+        }
+  });
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route,   Navigate } from 'react-router-dom';
 import './App.css';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Navbar from './components/Navbar';
@@ -9,6 +9,7 @@ import IntegrantComponents from './components/Integrant_components';
 import IngredientForm from './components/IngredientForm';
 import AuthPage from './components/AuthPage';
 import Footer from './components/Footer';
+import HistoryPage from './components/HistoryPage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -113,6 +114,34 @@ function AppContent() {
       token: null,
       id: null
     });
+
+  };
+
+  const fetchUserLogs = async () => {
+    try {
+      if (!user.isLoggedIn || !user.id) {
+        throw new Error('Usuário não está logado');
+      }
+
+      const response = await fetch(`${API_BASE_URL}/logs/${user.id}`, {
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Erro ao buscar logs');
+      }
+
+      const data = await response.json();
+      console.log(data);
+      return data;
+
+    } catch (error) {
+      console.error('Erro ao buscar logs:', error);
+      throw error;
+    }
   };
 
   return (
@@ -142,10 +171,28 @@ function AppContent() {
             />
           } 
         />
+        <Route 
+          path="/history" 
+          element={
+            <ProtectedRoute>
+              <HistoryPage fetchLogs = {fetchUserLogs} />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );
 }
+// Componente ProtectedRoute (se ainda não tiver)
+const ProtectedRoute = ({ children }) => {
+  const { user } = useAuth();
+  
+  if (!user.isLoggedIn) {
+    return <Navigate to="/auth" replace />;
+  }
+  
+  return children;
+};
 
 function App() {
   return (
