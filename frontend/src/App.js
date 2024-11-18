@@ -157,7 +157,6 @@ function AppContent() {
           <>
             <MainContent />
             <Button />
-            <IngredientForm />
             <About />
             <IngredientForm user={user}  />
             <IntegrantComponents />
