@@ -252,7 +252,6 @@ app.post('/calcular-calorias', async (req, res) => {
 });
 
 app.get('/logs/:userId', authenticateToken, async (req, res) => {
-    console.log('aqui2');
     try {
         const userId = req.params.userId;
       
