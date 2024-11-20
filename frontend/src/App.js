@@ -9,7 +9,6 @@ import IntegrantComponents from './components/Integrant_components';
 import IngredientForm from './components/IngredientForm';
 import AuthPage from './components/AuthPage';
 import Footer from './components/Footer';
-import Button from './components/Button';
 import HistoryPage from './components/HistoryPage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -156,7 +155,6 @@ function AppContent() {
         <Route path="/" element={
           <>
             <MainContent />
-            <Button />
             <About />
             <IngredientForm user={user}  />
             <IntegrantComponents />

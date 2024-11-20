@@ -1,10 +1,8 @@
 // src/components/MainContent.js
 
 import React from 'react';
-import Navbar from './Navbar';
 import Description from './Description';
 import HomepageFooter from './Homepage_footer';
-import IntegrantComponents from './Integrant_components';
 
 function MainContent() {
   return (
