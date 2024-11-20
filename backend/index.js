@@ -285,3 +285,7 @@ app.get('/logs/:userId', authenticateToken, async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
+
+app.get('/health', (req, res) => {
+    res.json({ status: 'ok' });
+});
