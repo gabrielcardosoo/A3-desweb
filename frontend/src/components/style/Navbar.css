@@ -27,6 +27,10 @@
     transform: scale(1.2); /* Animação de aumento no hover */
 }
 
+.github-icon {
+    font-size: 3.5rem; /* Tamanho maior apenas para este ícone */
+}
+
 /* Reduzindo o espaçamento para dispositivos móveis */
 @media (max-width: 991px) {
     .my-navbar .nav-link {

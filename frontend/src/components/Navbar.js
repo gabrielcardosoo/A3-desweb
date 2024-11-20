@@ -26,7 +26,7 @@ function Navbar({ user, onLogout }) {
     <nav className="navbar my-navbar navbar-expand-lg navbar-dark" ref={navbarRef}>
       <div className="container d-flex align-items-center justify-content-between">
         <a className="navbar-brand" href="/">
-          <img src="/img/logo_home_public.png" alt="Logo" width="150" height="150" className="logo" />
+          <img src="/img/logo_home_public.png" alt="Logo" width="75" height="75" className="logo" />
         </a>
         <button
           className="navbar-toggler"
@@ -58,6 +58,11 @@ function Navbar({ user, onLogout }) {
             <li className="nav-item">
               <a className="nav-link" href="#integrantes">
                 <i className="fas fa-users"></i> INTEGRANTES
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className='nav-link' href="https://github.com/gabrielcardosoo/A3-desweb">
+                <i className="fa-brands fa-github" style={{ fontSize: '1.8rem' }}></i> GitHub
               </a>
             </li>
           </ul>
