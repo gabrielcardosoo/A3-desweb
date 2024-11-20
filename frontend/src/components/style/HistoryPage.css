@@ -1,3 +1,9 @@
+#root, .App {
+  min-height: 200vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .history-container {
   padding: 2rem;
   max-width: 1200px;
@@ -11,7 +17,7 @@
 }
 
 .history-header h2 {
-  color: #333;
+  color: #a7a7a7;
   margin-bottom: 0.5rem;
 }
 
