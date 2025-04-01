@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máquina de Doces</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="interface-container">
+        <div class="maquina-container">
+            <div class="machine-top">
+                <div class="logo-area">
+                    <h1 class="maquina-titulo">Máquina de doce</h1>
+                    <div class="vending-lights">
+                        <div class="light"></div>
+                        <div class="light"></div>
+                        <div class="light"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="vitrine">
+                <div class="prateleira">
+                    <div class="doce" data-codigo="1" data-preco="6.00">
+                        <div class="doce-codigo">1</div>
+                        <img src="/img/chocolate.png" alt="Chocolate">
+                        <div class="doce-info">
+                            <div class="doce-nome">Chocolate</div>
+                            <div class="doce-preco">R$ 6,00</div>
+                        </div>
+                    </div>
+                    
+                    <div class="doce" data-codigo="2" data-preco="7.00">
+                        <div class="doce-codigo">2</div>
+                        <img src="/img/bala.jpg" alt="Bala">
+                        <div class="doce-info">
+                            <div class="doce-nome">Bala</div>
+                            <div class="doce-preco">R$ 7,00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="prateleira">
+                    <div class="doce" data-codigo="3" data-preco="8.00">
+                        <div class="doce-codigo">3</div>
+                        <img src="/img/chiclete.png" alt="Chiclete">
+                        <div class="doce-info">
+                            <div class="doce-nome">Chiclete</div>
+                            <div class="doce-preco">R$ 8,00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="vidro-reflexo"></div>
+            </div>
+            
+            <div class="painel-container">
+                <div class="painel-controle">
+                    <div class="painel-info">
+                        <div class="display">
+                            <div class="display-valor">R$ 0,00</div>
+                            <div class="display-mensagem"></div>
+                        </div>
+                        
+                        <div class="teclado">
+                            <button class="botao">1</button>
+                            <button class="botao">2</button>
+                            <button class="botao">3</button>
+                            <button class="botao-dest">4</button>
+                            <button class="botao-dest">5</button>
+                            <button class="botao-dest">6</button>
+                            <button class="botao-dest">7</button>
+                            <button class="botao-dest">8</button>
+                            <button class="botao-dest">9</button>
+                            <button class="botao-dest">C</button>
+                            <button class="botao-dest">0</button>
+                            <button class="botao">&larr;</button>
+                        </div>
+                        
+                        <button class="botao comprar">COMPRAR</button>
+                    </div>
+                    
+                    <div class="coin-slot-area">
+                        <div class="coin-slot">
+                            <div class="slot-text">INSIRA MOEDAS</div>
+                            <div class="slot-entrada"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="compartimento-saida">
+                    <div class="porta-saida">
+                        <div class="porta-saida-texto">RETIRE AQUI</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Área de moedas separada -->
+        <div class="moedas-container">
+            <h2 class="moedas-titulo">Valores Aceitos</h2>
+            <div class="coin-collection">
+                <div class="moeda moeda-1" data-valor="1.00">
+                    <span class="moeda-valor">R$1</span>
+                </div>
+                <div class="moeda moeda-2" data-valor="2.00">
+                    <span class="moeda-valor">R$2</span>
+                </div>
+                <div class="moeda moeda-5" data-valor="5.00">
+                    <span class="moeda-valor">R$5</span>
+                </div>
+            </div>
+            <div class="instrucoes">
+                <p><i class="fas fa-info-circle"></i> Clique nas moedas para inserir na máquina</p>
+                <p><i class="fas fa-hand-pointer"></i> Selecione um produto e clique em COMPRAR</p>
+                <p><i class="fas fa-money-bill"></i> Limite máximo: R$12,00</p>
+                <div id="troco-area" class="troco-area hidden">
+                    <h3>Seu Troco</h3>
+                    <div id="troco-moedas" class="troco-moedas"></div>
+                    <button id="coletar-troco" class="coletar-troco">
+                        <i class="fas fa-hand-holding-usd"></i> Coletar Troco
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,852 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f0f2f5;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(151, 151, 151, 0.8) 0%, rgba(255, 255, 255, 0) 20%),
+        linear-gradient(135deg, #636363 0%, #6b6b6b 40%, #979797 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    overflow-x: hidden;
+}
+
+.interface-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1000px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.maquina-container {
+    background: linear-gradient(180deg, #d42638 0%, #9e0f24 100%);
+    width: 420px;
+    max-width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 2px rgba(255, 255, 255, 0.1),
+        inset 0 0 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Efeito de reflexo na máquina */
+.maquina-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0));
+    pointer-events: none;
+}
+
+.machine-top {
+    padding: 15px;
+}
+
+.logo-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.maquina-titulo {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+}
+
+.maquina-titulo span {
+    color: #FFCC70;
+}
+
+.vending-lights {
+    display: flex;
+    gap: 8px;
+}
+
+.light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #4cd137;
+    box-shadow: 0 0 10px #4cd137;
+    animation: blinking 3s infinite alternate;
+}
+
+.light:nth-child(2) {
+    animation-delay: 1s;
+    background-color: #fbc531;
+    box-shadow: 0 0 10px #fbc531;
+}
+
+.light:nth-child(3) {
+    animation-delay: 2s;
+    background-color: #e84118;
+    box-shadow: 0 0 10px #e84118;
+}
+
+@keyframes blinking {
+    0%, 80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+
+.vitrine {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(248, 249, 250, 0.9);
+    margin: 0 15px 15px;
+    border-radius: 15px;
+    height: 360px;
+    position: relative;
+    box-shadow: 
+        inset 0 0 15px rgba(0, 0, 0, 0.2),
+        0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.prateleira {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 10px;
+    height: 50%;
+}
+
+.prateleira:last-child {
+    justify-content: center;
+}
+
+.vidro-reflexo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.5) 0%, 
+        rgba(255, 255, 255, 0.1) 20%, 
+        rgba(255, 255, 255, 0) 40%);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.doce {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 15px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    width: 45%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.doce:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.doce.selected {
+    border: 3px solid rgb(221, 171, 32);
+    box-shadow: 0 0 15px rgba(221, 171, 32, 0.5);
+    background-color: rgb(255, 220, 122);
+}
+
+.doce img {
+    width: 80px;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s;
+    max-height: 60px;
+}
+
+.doce:hover img {
+    transform: scale(1.1);
+}
+
+.doce-info {
+    text-align: center;
+    width: 100%;
+}
+
+.doce-nome {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.doce-preco {
+    color: #e74c3c;
+    font-weight: 700;
+    background-color: rgba(231, 76, 60, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.doce-codigo {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    background-color: #fac515;
+    color: white;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+.painel-container {
+    margin: 0 15px;
+}
+
+.painel-controle {
+    display: flex;
+    background: linear-gradient(180deg, #2c3e50 0%, #1a1a2e 100%);
+    border-radius: 15px;
+    padding: 15px;
+    color: white;
+    box-shadow: 
+        0 10px 15px -5px rgba(0, 0, 0, 0.3),
+        inset 0 2px 0 rgba(255, 255, 255, 0.1);
+    margin-bottom: 15px;
+}
+
+.painel-info {
+    flex: 1;
+}
+
+.display {
+    background-color: #000000;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 
+        inset 0 2px 5px rgba(0, 0, 0, 0.5),
+        0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.display-valor {
+    font-size: 28px;
+    font-family: 'VT323', monospace;
+    color: #4cd137;
+    text-align: right;
+    text-shadow: 0 0 5px rgba(76, 209, 55, 0.7);
+}
+
+.display-mensagem {
+    font-size: 14px;
+    color: #f39c12;
+    text-align: center;
+    min-height: 20px;
+    margin-top: 5px;
+    font-family: 'VT323', monospace;
+    letter-spacing: 0.5px;
+}
+
+.teclado {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.botao {
+    background: linear-gradient(180deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 
+        0 4px 0 #1c6392,
+        0 4px 10px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.botao-dest {
+    background: linear-gradient(180deg, #3498db25 0%, #14405e 100%);
+    color: rgb(180, 180, 180);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 
+        0 4px 0 #206594,
+        0 4px 10px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+.botao:hover {
+    background: linear-gradient(180deg, #3aa1e2 0%, #2e8bc0 100%);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 0 #1c6392,
+        0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Melhorar botões quando pressionados */
+.botao:active {
+    transform: translateY(4px);
+    box-shadow: 
+        0 0 0 #1c6392,
+        0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.botao.comprar {
+    background: linear-gradient(180deg, #2ecc71 0%, #27ae60 100%);
+    box-shadow: 
+        0 4px 0 #1d8348,
+        0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+    padding: 15px 10px;
+}
+
+.botao.comprar:hover {
+    background: linear-gradient(180deg, #33d978 0%, #2abb67 100%);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 0 #1d8348,
+        0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.botao.comprar:active {
+    transform: translateY(4px);
+    box-shadow: 
+        0 0 0 #1d8348,
+        0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.coin-slot-area {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.coin-slot {
+    background: linear-gradient(180deg, #34495e 0%, #2c3e50 100%);
+    width: 80px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.slot-text {
+    font-size: 9px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #ecf0f1;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.slot-entrada {
+    width: 60px;
+    height: 10px;
+    background-color: #000;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #444;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.compartimento-saida {
+    background-color: #1e272e;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        inset 0 2px 10px rgba(0, 0, 0, 0.8),
+        0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.porta-saida {
+    width: 150px;
+    height: 60px;
+    background: linear-gradient(180deg, #2c3e50 0%, #1a1a2e 100%);
+    margin: 0 auto;
+    border-radius: 0 0 15px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    box-shadow: 
+        inset 0 3px 6px rgba(0, 0, 0, 0.5),
+        0 1px 0 rgba(255, 255, 255, 0.05);
+    border-top: 4px solid #000;
+    position: relative;
+}
+
+.porta-saida-texto {
+    color: white;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.doce-entregue {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+}
+
+/* Área de moedas separada */
+.moedas-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border-radius: 20px;
+    width: 320px;
+    text-align: center;
+}
+
+.moedas-titulo {
+    font-weight: 600;
+    font-size: 22px;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.coin-collection {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.moeda {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    box-shadow: 
+        0 8px 15px rgba(0, 0, 0, 0.2),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.3),
+        inset 0 3px 3px rgba(255, 255, 255, 0.3);
+}
+
+.moeda:hover {
+    transform: translateY(-8px) rotate(10deg);
+    box-shadow: 
+        0 15px 25px rgba(0, 0, 0, 0.3),
+        inset 0 -3px 8px rgba(0, 0, 0, 0.3),
+        inset 0 3px 3px rgba(255, 255, 255, 0.3);
+}
+
+.moeda:hover::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.8;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.5;
+    }
+    70% {
+        transform: scale(1.05);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(0.95);
+        opacity: 0.5;
+    }
+}
+
+.moeda:active {
+    transform: scale(0.95);
+}
+
+.moeda::before {
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    border: 2px dotted rgba(255, 255, 255, 0.4);
+    top: 5%;
+    left: 5%;
+    pointer-events: none;
+}
+
+.troco-area, .moeda, .botao, .display-mensagem {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.moeda-valor {
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.7);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+}
+
+.moeda-1 {
+    background: linear-gradient(145deg, #9b59b6 0%, #8e44ad 100%);
+}
+
+.moeda-2 {
+    background: linear-gradient(145deg, #1abc9c 0%, #16a085 100%);
+}
+
+.moeda-5 {
+    background: linear-gradient(145deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.instrucoes {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: left;
+}
+
+.instrucoes p {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.instrucoes p:last-child {
+    margin-bottom: 0;
+}
+
+.instrucoes i {
+    margin-right: 8px;
+    color: #FFCC70;
+}
+
+.coin-animation {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.7);
+    top: -50px;
+    left: 10px;
+    z-index: 10;
+    box-shadow: 
+        0 5px 10px rgba(0, 0, 0, 0.3),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.2),
+        inset 0 2px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Área de Troco Melhorada */
+.troco-area {
+    background: linear-gradient(180deg, #2c3e50 0%, #1a1a2e 100%);
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.troco-area h3 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.troco-area h3::before {
+    content: '💰';
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.troco-moedas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    min-height: 70px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.troco-moeda {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.7);
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.2),
+        inset 0 2px 2px rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+.troco-moeda::before {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    top: 10%;
+    left: 10%;
+    pointer-events: none;
+}
+
+.troco-moeda span {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+}
+
+/* Cores das moedas de troco */
+.troco-moeda.moeda-1 {
+    background: linear-gradient(145deg, #9b59b6 0%, #8e44ad 100%);
+    transform: rotate(-5deg);
+}
+
+.troco-moeda.moeda-2 {
+    background: linear-gradient(145deg, #1abc9c 0%, #16a085 100%);
+    transform: rotate(5deg);
+}
+
+.troco-moeda.moeda-5 {
+    background: linear-gradient(145deg, #e74c3c 0%, #c0392b 100%);
+    transform: rotate(-3deg);
+}
+
+/* Animação para as moedas de troco caindo */
+.troco-moeda-animation {
+    animation: trocoQueda 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0;
+}
+
+@keyframes trocoQueda {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    80% {
+        transform: translateY(10px) rotate(360deg);
+    }
+    90% {
+        transform: translateY(-5px) rotate(370deg);
+    }
+    100% {
+        transform: translateY(0) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+/* Botão para coletar o troco */
+.coletar-troco {
+    background: linear-gradient(180deg, #f39c12 0%, #e67e22 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-shadow: 
+        0 4px 0 #d35400,
+        0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+}
+
+.coletar-troco:hover {
+    background: linear-gradient(180deg, #f5ab35 0%, #eb9532 100%);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 0 #d35400,
+        0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.coletar-troco:active {
+    transform: translateY(2px);
+    box-shadow: 
+        0 2px 0 #d35400,
+        0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.coletar-troco i {
+    margin-right: 8px;
+}
+
+.troco-confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f39c12;
+    border-radius: 2px;
+    opacity: 0;
+    animation: confetti 1s ease-out forwards;
+}
+
+@keyframes confetti {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes coinDrop {
+    0% {
+        top: -50px;
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        top: 30px;
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes doceQueda {
+    0% {
+        top: -150px;
+        transform: translateX(-50%) rotate(0deg);
+    }
+    50% {
+        transform: translateX(-50%) rotate(180deg);
+    }
+    100% {
+        top: -20px;
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .interface-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .moedas-container {
+        width: 420px;
+        max-width: 100%;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .maquina-container, .moedas-container {
+        width: 100%;
+    }
+    
+    .coin-collection {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .moeda {
+        width: 50px;
+        height: 50px;
+    }
+}
